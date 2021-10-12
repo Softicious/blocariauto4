@@ -1,0 +1,47 @@
+{
+    "project_info": {
+      "project_number": "678088826521",
+      "project_id": "blocari-auto---ps4---android",
+      "storage_bucket": "blocari-auto---ps4---android.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:678088826521:android:e2490df120b209a0e92208",
+          "android_client_info": {
+            "package_name": "ro.ps4.blocariautoapp"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "678088826521-4bhcuham1h2bin4v7982qh44hvkilbom.apps.googleusercontent.com",
+            "client_type": 1,
+            "android_info": {
+              "package_name": "ro.ps4.blocariautoapp",
+              "certificate_hash": "ed83138bb585009314b871c818228b1bee59853f"
+            }
+          },
+          {
+            "client_id": "678088826521-u97na9s7mkldnki37cqt6tmoi754fphu.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyDVHcn-QORViQslIOStXUo9Udwuy8bBiwM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "678088826521-u97na9s7mkldnki37cqt6tmoi754fphu.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }

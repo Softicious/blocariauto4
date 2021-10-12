@@ -1,0 +1,36 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-title>{{ 'parkingViewContractPage.titleSection' | translate }}</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="dismiss()">
+				<fa-icon icon="times" class="white-text"></fa-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="parkingViewContractPageClass">
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<p><strong>Nume: </strong> {{contractLocParcare.nume}}</p>
+				<p><strong>CNP/CUI: </strong> {{contractLocParcare.cnp}}</p>
+				<p><strong>Adresa: </strong> {{contractLocParcare.adresa}}</p>
+				<p><strong>Marca masina: </strong> {{contractLocParcare.marca_masina}}</p>
+				<p><strong>Nr auto: </strong> {{contractLocParcare.numar_masina}}</p>
+				<p><strong>Loc parcare: </strong> {{contractLocParcare.nr_parcare}}</p>
+				<p><strong>Simbol parcare: </strong> {{contractLocParcare.simbol}}</p>
+				<p><strong>Sold: </strong> {{contractLocParcare.sold}}</p>
+				<p><strong>Status: </strong> {{contractLocParcare.contract_info}}</p>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<a href="{{contractLocParcare.schita}}">
+					<img src="{{contractLocParcare.schita}}" class="full-width" />
+				  </a>
+			</ion-col>
+		</ion-row>
+		
+	</ion-grid>
+</ion-content>

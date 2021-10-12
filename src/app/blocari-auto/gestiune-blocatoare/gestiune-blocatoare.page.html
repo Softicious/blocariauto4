@@ -1,0 +1,89 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="home" mode="md"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			<ion-title>Blocatoare in gestiune</ion-title>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="gestiuneBlocatorePageClass">
+	<ion-grid *ngIf="loaded == 1">
+		<ion-row>
+			<ion-col>
+				<div class="custom-box">
+					<div class="right-section">
+						<p>Numar blocatoare<br /> gestiune proprie</p>
+					</div>
+					<div class="left-section">
+						<h3>{{numberBlocatoareActive || 0}}</h3>
+					</div>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<!-- Default Segment -->
+				<ion-segment (ionChange)="segmentChanged($event)" value="incarca" color="primary">
+					<ion-segment-button value="incarca">
+						<ion-label>Incarca</ion-label>
+					</ion-segment-button>
+					<ion-segment-button value="descarca">
+						<ion-label>Descarca</ion-label>
+					</ion-segment-button>
+				</ion-segment>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<form [formGroup]="form" (ngSubmit)="checkBlocatorAuto()" class="form">
+
+					<ion-row>
+						<ion-col class="noPadding">
+							<ion-item
+								class="clear-cover-inputs">
+								<ion-label position="stacked">Blocator<span
+										class="orange-text">*</span>:</ion-label>
+								<ion-input type="text" formControlName="blocator" placeholder="..."></ion-input>
+							</ion-item>
+							<!-- <div *ngIf="(blocator.dirty || blocator.touched) && blocator.errors" class="errors">
+								<span *ngIf="blocator.errors?.required">{{ 'pageRegister.form.nameRequired' | translate }}</span>
+								<span *ngIf="blocator.errors?.maxlength">{{ 'parkingCheckContractPage.form.maxLength' | translate }}</span>
+								<span *ngIf="blocator.errors?.minlength">{{ 'parkingCheckContractPage.form.minLength' | translate }}</span>
+							</div> -->
+
+							<ion-button type="submit" expand="block" fill="solid" color="success" class="uppercase ion-margin-top" [disabled]="!form.valid">
+								<strong>Verifica</strong>
+							</ion-button>
+						</ion-col>
+					</ion-row>
+				</form>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col>
+				<p class="text-center"><strong>Blocatoare in gestiune</strong></p>
+				<ion-list>
+					<ion-item *ngFor="let row of blocatoareList; let i = index" >
+						<ion-label>
+							<div class="small-table-like-list">
+								<span class="ion-padding-start ion-padding-end">{{i + 1}}.</span>
+								<span>{{row.code}}</span>
+							</div>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+			
+	</ion-grid>
+
+	<!-- fab placed to the bottom and start and on the bottom edge of the content overlapping footer with a list to the right -->
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<ion-fab-button (click)="scanQR()" color="secondary">
+			<ion-icon name="qr-code-outline"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+</ion-content>

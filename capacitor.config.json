@@ -1,0 +1,12 @@
+{
+  "appId": "ro.ps4.blocariautoapp",
+  "appName": "Blocari Auto PS4",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist/app/browser",
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false
+    }
+  }
+}

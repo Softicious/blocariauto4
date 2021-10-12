@@ -1,0 +1,81 @@
+ion-content.notificariPage {
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+    --background: #e2eef5;
+}
+
+.article-title p {
+    font-weight: 600;
+    font-size: 14px;
+    flex-wrap: nowrap;
+    // white-space: normal;
+    white-space: pre-line;
+    width: 100%;
+  }
+  ion-row.article-bottom-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+  }
+  .pull-left {
+      float:left;
+  }
+  .pull-right {
+    float:right;
+}
+ion-row.mesaj-object.new {
+    background: white;
+}
+ion-row.mesaj-object.seen {
+    background: #f4f4f4;
+}
+.centruMesajePage .seen p, .centruMesajePage .seen small {
+    color: #a7a4a4;
+}
+.grey-text {
+    color: #888;
+}
+
+.floating-bell {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    z-index: 1;
+}
+.mesaj-object {
+    position: relative;
+}
+ion-fab-button {
+    margin-left: 140px;
+    overflow: visible;
+    position: relative;
+    margin-bottom: 5px;
+  }
+  ion-fab-list {
+    ion-label {
+      position: absolute;
+      top: 10px;
+      right: 70px;
+      color: white;
+      background-color: #1665c0;
+      line-height: 24px;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+  }
+  ion-fab {
+    ion-badge {
+      position: relative;
+      top: 10px;
+      left: 140px;
+    }
+  }
+
+  .position-relative {
+      position:relative
+  }
+  .size25 {
+      font-size: 25px;
+  }

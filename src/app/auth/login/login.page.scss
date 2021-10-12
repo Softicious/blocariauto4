@@ -1,0 +1,98 @@
+ion-content  {
+  --padding-top: 10%;
+  --padding-start: 2%;
+  --padding-end: 2%;
+  // --background: url("../../../assets/bgs/layout-bg-ex4.jpg") 0 0/100% 100% no-repeat;
+  //   background: url("../../../assets/bgs/layout-bg-ex4.jpg") 0 0/100% 100% no-repeat;
+}
+
+
+.input-group {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+.errors {
+  font-size: small;
+  color: #fff;
+  background: var(--ion-color-danger);
+  padding-left: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+// .pageLogin ion-item {
+  // --border-color: #fff;
+// }
+.pageLogin .input-group {
+  border-radius: 0 !important;
+  background: rgba(0, 0, 0, 0) !important;
+}
+.noWhitesBg ion-item {
+  background: transparent;
+}
+
+// small hack to solve some stuff
+.clear-cover-inputs .item-input ion-label {
+  pointer-events: all !important;
+}
+
+.clear-cover-inputs .input-cover {
+  display: none;
+}
+.pageLogin ion-label.clear-cover-inputs, .pageLogin ion-item.clear-cover-inputs, .pageLogin ion-label.clear-cover-inputs .has-focus  {
+    --background: rgba(5, 3, 3, 0);
+    --border-color: rgba(0,0,0,0);
+    --color: #fff;
+    color: #fff !important;
+    background: rgba(0,0,0,0);
+    border-color: rgba(0,0,0,0);
+}
+.pageLogin ion-label.clear-cover-inputs, .pageLogin ion-label.clear-cover-inputs .has-focus{
+    font-weight: 500 !important;
+}
+
+.pageLogin ion-item.clear-cover-inputs.item-has-focus ion-label {
+    --color: #fff !important;
+    color: #fff !important;
+    font-weight: 500 !important;
+}
+.pageLogin ion-item.clear-cover-inputs ion-input {
+    border-bottom: 1px solid white;
+}
+
+
+
+.testInput ion-col {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.testInput ion-input {
+  /* display: inline-block; */
+  width: calc(20%);
+  height: 50px;
+  margin: 5px;
+  padding: 0;
+  --background: #e1e1e1;
+  --padding-start: 7px;
+  background: white;
+  font-size: 20px;
+  text-align: center;
+}
+.testInput input {
+  text-align: center;
+}

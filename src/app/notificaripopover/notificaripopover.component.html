@@ -1,0 +1,37 @@
+<ion-list class="notificaripopover">
+	<ion-list-header>Alegeți</ion-list-header>
+	<ion-item button (click)="dismiss(1)">
+		<p class="text-left">
+			<span>Toate notificările</span>
+			<span *ngIf="[-1,0,1].includes(mode)" class="pull-right blue-icon">
+				<ion-icon name="checkmark-circle-sharp"></ion-icon>
+			</span>
+		</p>
+	</ion-item>
+	<ion-item button (click)="dismiss(2)">
+		<p class="text-left">
+			<span>Notificări citite</span>
+			<span *ngIf="[2].includes(mode)" class="pull-right blue-icon">
+				<ion-icon name="checkmark-circle-sharp"></ion-icon>
+			</span>
+		</p>
+	</ion-item>
+	<ion-item button (click)="dismiss(3)">
+		<p class="text-left">
+			<span>Notificări necitite</span>
+			<span *ngIf="[3].includes(mode)" class="pull-right blue-icon">
+				<ion-icon name="checkmark-circle-sharp"></ion-icon>
+			</span>
+		</p>
+	</ion-item>
+	<ion-item button (click)="dismiss(4)">
+		<p class="text-left">
+			<span>Marcați ca citite</span>
+		</p>
+	</ion-item>
+	<ion-item lines="none" detail="false" button (click)="dismiss(0)">
+		<p class="text-left">
+			<span>Închide</span>
+		</p>
+	</ion-item>
+</ion-list>

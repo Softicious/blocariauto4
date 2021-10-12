@@ -1,0 +1,8 @@
+{
+  "name": "Blocari Auto PS4",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

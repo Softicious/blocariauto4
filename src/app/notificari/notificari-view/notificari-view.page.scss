@@ -1,0 +1,110 @@
+ion-content.notificareViewPageClass {
+    --padding-start: 0 !important;
+    --padding-end: 0 !important;
+    --background: #e2eef5;
+}
+.m5 {
+    margin: 5px !important;
+}
+.centruMesajePage ion-grid.grid {
+    padding: 0;
+}
+.centruMesajePage ion-row.mesaj-object {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #eae8e8;
+}
+ion-col.center-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ion-col.mesaj-object-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+.mesaj-object-list ion-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.centruMesajePage p {
+    margin: 5px;
+    font-size: 90%;
+}
+p.mesaj-header {
+    font-weight: 500;
+}
+ion-row.mesaj-object.new {
+    background: white;
+}
+ion-row.mesaj-object.seen {
+    background: #f4f4f4;
+}
+.centruMesajePage .seen p, .centruMesajePage .seen small {
+    color: #a7a4a4;
+}
+.centruMesajePage .seen .blue-icon {
+    color: #a7a4a4;
+}
+.ps4-logo-bg {
+    background-image: url('/assets/imgs/no-image.png');
+    background-size: cover;
+    background-position: center;
+    height: 110px;
+}
+.mesaj-object img.article-img {
+    width: 100% !important;
+    height: 100% !important;
+}
+.centru_mesaje_notification .alert-wrapper {
+    max-width: 500px !important;
+    width: calc( 100% - 20px);
+}
+.centru_mesaje_notification .alert-head .alert-sub-title {
+    padding: 5px 20px;
+    font-size: 20px;
+}
+.centru_mesaje_notification .alert-message {
+    padding: 5px 20px;
+}
+.centru_mesaje_notification .alert-head .alert-title {
+    background: #1565c0;
+    padding: 10px 20px;
+    color: white;
+    font-size: 85%;
+}
+.centru_mesaje_notification .alert-head {
+    padding: 0 !important;
+}
+.centru_mesaje_notification .alert-wrapper {
+    max-width: 500px !important;
+    width: calc( 100% - 20px);
+}
+ion-row.article-title {
+    width: 100%;
+}
+.floating-bell {
+    position: absolute;
+    right: 0px;
+    top: 10px;
+    z-index: 1;
+}
+.mesaj-header {
+    color: #1665c0;
+    text-decoration: underline;
+}
+.grey-text {
+    color: #3f3e3e;
+}
+.mesaj-object-list p {
+    font-size: 80%;
+}

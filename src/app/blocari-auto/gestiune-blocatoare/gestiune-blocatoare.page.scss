@@ -1,0 +1,79 @@
+ion-content.gestiuneBlocatorePageClass {
+    --padding-top: 0 !important;
+    --padding-start: 0% !important;
+    --padding-end: 0% !important;
+}
+.whiteBg {
+    background: white;
+    padding: 15px 5px !important;
+    box-shadow: 1px 1px 1px solid #ddd;
+    border-radius: 5px;
+    border:1px solid #eae5e5;
+}
+.errors {
+    font-size: small;
+    color: #fff;
+    background: var(--ion-color-danger);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.gestiuneBlocatorePageClass ion-button, .gestiuneBlocatorePageClass ion-button strong {
+    --color: white !important;
+    color: white !important;
+}
+.gestiuneBlocatorePageClass .passwordIcon  {
+    color:#1665c0;
+}
+.bluer-text, .file-label {
+    color: #1665c0 !important;
+}
+.info-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.custom-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border: 2px solid #e66c6c;
+}
+.right-section {
+    flex: 2;
+    display: flex;
+    background: #e66c6c;
+    color: white;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.left-section {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.small-table-like-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.segment-button-checked ion-label {
+    color: white;
+    --color: white;
+}
+.segment-button-checked {
+    background: #1665c0;
+    color: white;
+    --color: white;
+}
+ion-segment {
+    border: 2px solid #1665c0;
+}

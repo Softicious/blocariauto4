@@ -1,0 +1,56 @@
+<ion-header [class.hidden]="viewData == 0">
+	<ion-toolbar mode="md">
+		<ion-title>{{ 'notificariPage.one.titleSection' | translate }}</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="dismiss()">
+				<fa-icon icon="times" class="white-text"></fa-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="notificareViewPageClass centruMesajePage" [class.fullScreenSlide]="viewData == 0">
+	<ion-row *ngIf="loaded == 1 && mesaj.cover !== null">
+		<ion-col class="image-wrapper" [ngStyle]="{'background-image': 'url(' + mesaj.cover+ ')'}" size-xl="4" offset-xl="4" size-lg="6" offset-lg="3" size-md="6" offset-md="3" size-sm="12">
+			<span *ngIf="mesaj.gallery_list.length > 0" class="expand-bubble-expand"
+				(click)="showSlide(mesaj.gallery_list)"><i class="fas fa-expand"></i></span>
+		</ion-col>
+	</ion-row>
+	<ion-row class="mesaj-object" style="background: white;" *ngIf="loaded == 1">
+		<ion-col size="12" class="mesaj-object-list">
+			<ion-row>
+				<ion-col size="12">
+					<h3 class="mesaj-header blue-text text-center">{{mesaj.title}}</h3>
+				</ion-col>
+				<ion-col size="12">
+					<span class="ion-float-right">
+						<small class="grey-text m5">{{mesaj.time}}</small> 
+						<small class="grey-text m5">{{mesaj.date}}</small>
+					</span>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<div [innerHTML]="mesaj.content"></div>
+				</ion-col>
+			</ion-row>
+		</ion-col>
+	</ion-row>
+
+
+	<ion-grid *ngIf="viewData == 0" class="ion-no-padding ion-no-margin">
+        <!-- create all slides to show what we need to see -->
+        <ion-row>
+            <ion-col size-xl="4" offset-xl="4" size-lg="6" offset-lg="3" size-md="6" offset-md="3" size-sm="12">
+                <span class="closeBtnSmall" (click)="closeSlide()">
+					<fa-icon icon="times"></fa-icon>
+				</span>
+                <ion-slides id="gallerySlide" [options]="slidesOptions" pager="false">
+                    <ion-slide *ngFor="let image of gallery; let i = index" class="ion-justify-content-center ion-align-items-center">
+                        <img [src]="image.big_size" class="img-responsive" id="image-{{i}}" (click)="showSlide(i)" />
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

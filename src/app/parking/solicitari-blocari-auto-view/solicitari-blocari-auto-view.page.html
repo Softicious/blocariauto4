@@ -1,0 +1,895 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-title>Solicitare #{{solicitareId}}</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="getSolicitareData()">
+				<ion-icon slot="icon-only" name="repeat-outline"></ion-icon>
+			</ion-button>
+			<ion-button (click)="dismiss()">
+				<fa-icon icon="times" class="white-text"></fa-icon>
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+	<ion-segment class="header-segment" color="primary" [(ngModel)]="showTab" (ionChange)="checkChangeTabNow($event)">
+
+		<ion-segment-button value="info">
+			<div>
+				<ion-label>
+					<p class="blue-icon ion-no-padding ion-no-margin">INFO</p>
+				</ion-label>
+			</div>
+		</ion-segment-button>
+		<ion-segment-button value="istoric">
+			<div>
+				<ion-label>
+					<p class="blue-icon ion-no-padding ion-no-margin">ISTORIC</p>
+				</ion-label>
+			</div>
+		</ion-segment-button>
+		<ion-segment-button value="actiuni">
+			<div>
+				<ion-label>
+					<p class="blue-icon ion-no-padding ion-no-margin">ACTIUNI</p>
+				</ion-label>
+			</div>
+		</ion-segment-button>
+
+	</ion-segment>
+</ion-header>
+
+<ion-content class="publiceMainClass" *ngIf="loaded == 1">
+	<ion-grid *ngIf="showTab == 'info'">
+		<ion-row>
+			<ion-col>
+				<ion-list class="ion-no-padding info-section box-sections">
+					<ion-list-header class="ion-no-padding ion-no-margin" (click)="showSection('info')">
+						<h4 class="display-flex ion-justify-content-between ion-padding-start ion-padding-end">
+							<span>INFO</span>
+							<fa-icon icon="times" *ngIf="showSections.info"></fa-icon>
+							<fa-icon icon="plus" *ngIf="!showSections.info"></fa-icon>
+						</h4>
+					</ion-list-header>
+					<ion-item *ngIf="showSections.info">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Tip Solicitare</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.subject}}</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.info">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Status</strong></p>
+							<p class="ion-no-padding ion-no-margin display-flex ion-justify-content-between">
+								<span>{{solicitare.status_label}}</span>
+								<span *ngIf="solicitare.caracatita_id !== null">
+									<fa-icon icon="wrench" class="ion-padding-end"></fa-icon>
+									{{solicitare.caracatita_label}}
+								</span>
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.info">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Creator</strong></p>
+							<p class="ion-no-padding ion-no-margin display-flex ion-justify-content-between">
+								<span>{{solicitare.source_label}}</span>
+								<span *ngIf="solicitare.nr_auto !== null">
+									<fa-icon icon="cogs" class="ion-padding-end blue-icon"></fa-icon>
+									{{solicitare.categorie_auto}}
+								</span>
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.info">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Nr auto blocat</strong></p>
+							<p class="ion-no-padding ion-no-margin display-flex ion-justify-content-between">
+								<span>{{solicitare.nr_auto || 'n/a'}}</span>
+								<span *ngIf="getLocationProcessed">
+									<fa-icon icon="location-arrow" class="ion-padding-end blue-icon"></fa-icon>
+									{{distance}} KM
+								</span>
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.info">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Data Solicitarii / Ultima
+									Actualizare</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.created_at || 'n/a'}} /
+								{{solicitare.updated_at || 'n/a'}}</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.info">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Observatii</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.observatii || 'n/a'}}</p>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+
+				<ion-list class="ion-no-padding payment-section ion-margin-top box-sections"
+					*ngIf="solicitare?.invoice?.sold > 0">
+					<ion-list-header class="ion-no-padding ion-no-margin" (click)="showSection('payment')">
+						<h4 class="display-flex ion-justify-content-between ion-padding-start ion-padding-end">
+							<span>OBLIGATII DE PLATA</span>
+							<fa-icon icon="times" *ngIf="showSections.payment"></fa-icon>
+							<fa-icon icon="plus" *ngIf="!showSections.payment"></fa-icon>
+						</h4>
+					</ion-list-header>
+					<ion-item *ngIf="showSections.payment">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Debite</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.invoice.sold}} RON</p>
+						</ion-label>
+					</ion-item>
+
+					<ion-item *ngIf="showSections.payment">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Status plata</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.invoice.status_label}}</p>
+						</ion-label>
+					</ion-item>
+
+					<ion-item *ngIf="showSections.payment">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Metoda Plata</strong></p>
+							<p class="ion-no-padding ion-no-margin">
+								<span *ngIf="solicitare.invoice.payment_date == null">Neachitat</span>
+								<span
+									*ngIf="solicitare.invoice.payment_date !== null">{{solicitare.invoice.payment_method}}
+									/ {{solicitare.invoice.payment_date}}</span>
+							</p>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+
+				<ion-list class="ion-no-padding parcare-section ion-margin-top box-sections"
+					*ngIf="solicitare.id_loc_parcare !== null">
+					<ion-list-header class="ion-no-padding ion-no-margin" (click)="showSection('parcare')">
+						<h4 class="display-flex ion-justify-content-between ion-padding-start ion-padding-end">
+							<span>LOC PARCARE</span>
+							<fa-icon icon="times" *ngIf="showSections.parcare"></fa-icon>
+							<fa-icon icon="plus" *ngIf="!showSections.parcare"></fa-icon>
+						</h4>
+					</ion-list-header>
+					<ion-item *ngIf="showSections.parcare">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Cetatean</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.cetateanLocParcare.nume}}
+								{{solicitare.cetateanLocParcare.prenume}}</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.parcare">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Telefon</strong></p>
+							<p class="ion-no-padding ion-no-margin">
+								<a
+									href="tel:{{solicitare.cetateanLocParcare.telefon}}">{{solicitare.cetateanLocParcare.telefon}}</a>
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.parcare">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Loc parcare</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.simbol}} / {{solicitare.nr_parcare}}
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.parcare">
+						<ion-label>
+							<a href="{{solicitare.schita}}" target="_blank">
+								<img class="img-responsive" src="{{solicitare.schita}}" width="100%">
+							</a>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+
+				<ion-list class="ion-no-padding cetBlocatSection ion-margin-top box-sections"
+					*ngIf="solicitare.cetateanBlocat !== null">
+					<ion-list-header class="ion-no-padding ion-no-margin" (click)="showSection('blocat')">
+						<h4 class="display-flex ion-justify-content-between ion-padding-start ion-padding-end">
+							<span>CETATEAN BLOCAT</span>
+							<fa-icon icon="times" *ngIf="showSections.blocat"></fa-icon>
+							<fa-icon icon="plus" *ngIf="!showSections.blocat"></fa-icon>
+						</h4>
+					</ion-list-header>
+					<ion-item *ngIf="showSections.blocat">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Cetatean</strong></p>
+							<p class="ion-no-padding ion-no-margin">{{solicitare.cetateanBlocat.nume}}
+								{{solicitare.cetateanBlocat.prenume}}  
+								<span class="pull-right" (click)="updateNameCetatean()"><fa-icon icon="pencil-alt" style="color: orange"></fa-icon></span>
+							</p>
+								
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.blocat">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Telefon</strong></p>
+							<p class="ion-no-padding ion-no-margin">
+								<a
+									href="tel:{{solicitare.cetateanBlocat.telefon}}">{{solicitare.cetateanBlocat.telefon || 'n/a'}}</a>
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.blocat && solicitare.cetateanBlocat.f_nume !== null">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>Denumire Companie</strong></p>
+							<p class="ion-no-padding ion-no-margin">
+								{{solicitare.cetateanBlocat.f_nume}}
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.blocat && solicitare.cetateanBlocat.cnp !== null">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>CUI</strong></p>
+							<p class="ion-no-padding ion-no-margin">
+								{{solicitare.cetateanBlocat.cnp}}
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="showSections.blocat">
+						<ion-label>
+							<p class="ion-no-padding ion-no-margin"><strong>CI Serie / Numar</strong></p>
+							<p class="ion-no-padding ion-no-margin">
+								{{solicitare.cetateanBlocat.ci_serie || 'n/a' }} - {{solicitare.cetateanBlocat.ci_numar || 'n/a' }}
+							</p>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+
+	</ion-grid>
+
+	<ion-grid *ngIf="showTab == 'istoric'">
+		<ion-row>
+			<ion-col>
+
+				<ion-list class="ion-no-padding ion-margin-top">
+					<ion-item *ngFor="let row of solicitare.desfasurator"
+						class="history-box ion-no-padding ion-no-margin ion-margin-bottom {{infoBoxes[row.status_id].class}}">
+						<ion-label
+							class="ion-no-padding display-flex ion-justify-content-start ion-no-margin ion-padding-bottom flex-column">
+							<h4 class=" history-box-title ion-no-padding ion-no-margin">
+								<fa-icon icon="{{infoBoxes[row.status_id].icon}}"></fa-icon>
+								<span class="ion-padding-start">{{row.status_label}}</span>
+							</h4>
+							<p class="ion-padding-start" *ngIf="row.user_name !== null">
+								<strong>Operator:</strong> {{row.user_name}}
+							</p>
+							<p class="ion-padding-start" *ngIf="row.echipa_name !== null">
+								<strong>Operator teren:</strong> {{row.echipa_name}}
+
+							</p>
+							<p class="ion-padding-start" *ngIf="row.eta !== null">
+								<strong>ETA:</strong> {{row.eta}} min
+							</p>
+							<p class="ion-padding-start" *ngIf="row.observatii !== null">
+								<strong>OBS:</strong> {{row.observatii || 'n/a'}}
+
+							</p>
+							<p class="ion-padding-start" *ngIf="row.date !== null">
+								<strong>DATA:</strong> {{row.date}}
+							</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="solicitare.desfasurator.length == 0">
+						<ion-label>
+							<p class="text-center">Lipsa inregistrari</p>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-grid *ngIf="showTab == 'actiuni'">
+		<ion-row>
+			<ion-col>
+				<p></p>
+				<ion-list class="ion-no-padding ion-margin-top">
+					<ion-item *ngIf="solicitare.pvs.blocare.numar > 0">
+						<ion-label>
+							<p><strong>PV blocare</strong></p>
+							<p>{{solicitare.pvs.blocare.numar}} / {{solicitare.pvs.blocare.data}}</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="solicitare.pvs.deblocare.numar > 0">
+						<ion-label>
+							<p><strong>PV deblocare</strong></p>
+							<p>{{solicitare.pvs.deblocare.numar}} / {{solicitare.pvs.deblocare.data}}</p>
+						</ion-label>
+					</ion-item>
+					<ion-list-header *ngIf="formStepActiuni == 0">
+						<p *ngIf="solicitare.info.b_date == null">
+							<fa-icon icon="lock-open"></fa-icon>
+							<span class="ion-padding-start">Neblocat</span>
+						</p>
+						<p *ngIf="solicitare.info.b_date !== null && solicitare.info.d_date == null">
+							<fa-icon icon="lock"></fa-icon>
+							<span class="ion-padding-start">Blocat</span>
+						</p>
+						<p *ngIf="solicitare.info.b_date !== null && solicitare.info.d_date !== null">
+							<fa-icon icon="lock-open"></fa-icon>
+							<span class="ion-padding-start">Deblocat</span>
+						</p>
+					</ion-list-header>
+					<ion-item *ngIf="formStepActiuni == 0">
+						<ion-label>
+							<p><strong>Status</strong></p>
+							<p>{{solicitare.status_label}}</p>
+						</ion-label>
+					</ion-item>
+					<ion-item *ngIf="formStepActiuni == 0">
+						<ion-label>
+							<p><strong>Nr Auto</strong></p>
+							<p>{{solicitare.nr_auto || 'n/a' }}</p>
+						</ion-label>
+					</ion-item>
+
+					<ion-item *ngIf="solicitare.current_status == 7 && solicitare.info.b_date !== null">
+						<ion-label>
+							<p><strong>Total de plata</strong></p>
+							<p>{{solicitare.invoice.sold || 'n/a' }} RON</p>
+						</ion-label>
+					</ion-item>
+
+					<ion-item *ngIf="solicitare.current_status == 7 && solicitare.info.b_date !== null">
+						<ion-label>
+							<p><strong>Status Plata</strong></p>
+							<p>{{solicitare.invoice.status_label || 'n/a' }}</p>
+						</ion-label>
+					</ion-item>
+
+					<ion-item lines="none" *ngIf="solicitare.current_status == 4 && formStepActiuni == 0">
+						<ion-col size="12">
+							<ion-button type="button" expand="block" fill="solid" color="success"
+								(click)="raspundeEchipa()" class="uppercase ion-margin-top">
+								<strong>RASPUNDE</strong>
+							</ion-button>
+						</ion-col>
+					</ion-item>
+
+					<ion-item lines="none" *ngIf="solicitare.current_status == 5 && solicitare.info.b_date == null">
+						<ion-col size="12" class="ion-no-padding">
+							<ion-row>
+								<ion-col>
+									<ion-button type="button" expand="block" fill="solid" color="warning"
+										(click)="anuleazaSolicitarea()" class="uppercase ion-margin-top">
+										<strong>ANULEAZA</strong>
+									</ion-button>
+								</ion-col>
+							</ion-row>
+							<ion-row>
+								<ion-col>
+									<p class="text-center">SAU</p>
+								</ion-col>
+							</ion-row>
+							<ion-row>
+								<form [formGroup]="blockData" (ngSubmit)="blockAuto()" class="registerForm full-width">
+									<ion-col class="ion-no-padding">
+										<ion-row>
+											<ion-col>
+												<ion-item>
+													<ion-label position="stacked"> Numar auto Blocat: <span
+															class="red-text">*</span>
+													</ion-label>
+													<ion-input type="text" formControlName="nrauto"
+														placeholder="B123ABC">
+													</ion-input>
+												</ion-item>
+												<div *ngIf="(nrauto.dirty || nrauto.touched) && nrauto.errors"
+													class="errors">
+													<span *ngIf="nrauto.errors?.required">Camp obligatoriu</span>
+													<span *ngIf="nrauto.errors?.maxlength">Limita de 30 de caractere a
+														fost atinsa</span>
+													<span *ngIf="nrauto.errors?.minlength">Camp obligatoriu</span>
+												</div>
+											</ion-col>
+										</ion-row>
+										<ion-row *ngIf="solicitare.source == 2">
+											<ion-col size="12">
+												<ion-item>
+													<ion-label position="stacked"> Tip loc parcare blocat
+														<span class="red-text">*</span>
+													</ion-label>
+													<ion-select formControlName="parking_type" okText="Confirmă" placeholder="Alegeți"
+														cancelText="Anulați" class="text-right full-width size15">
+														<ion-select-option *ngFor="let row of parkingTypes" [value]="row.id">
+															{{row.label}}
+														</ion-select-option>
+													</ion-select>
+												</ion-item>
+												<div *ngIf="(parkingtype.dirty || parkingtype.touched) && parkingtype.errors"
+													class="errors">
+													<span *ngIf="parkingtype.errors?.required">{{ 'sesizareAddPage.requiredField' |
+														translate }}</span>
+												</div>
+											</ion-col>
+										</ion-row>
+										<ion-row>
+											<ion-col size="12">
+												<ion-item>
+													<ion-label position="stacked"> Categorie Auto Blocat
+														<span class="red-text">*</span>
+													</ion-label>
+													<ion-select formControlName="categorie_auto" okText="Confirmă" placeholder="Alegeți"
+														cancelText="Anulați" class="text-right full-width size15">
+														<ion-select-option *ngFor="let row of categoriiAuto" [value]="row.id">
+															{{row.label}}
+														</ion-select-option>
+													</ion-select>
+												</ion-item>
+												<div *ngIf="(categorieAuto.dirty || categorieAuto.touched) && categorieAuto.errors"
+													class="errors">
+													<span *ngIf="categorieAuto.errors?.required">{{ 'sesizareAddPage.requiredField' |
+														translate }}</span>
+												</div>
+											</ion-col>
+										</ion-row>
+
+										<ion-row style="width: 100%">
+											<ion-col size="12">
+												<ion-item>
+													<ion-label position="floating">{{ 'sesizareAddPage.observatiiLabel'
+														| translate }}<span class="orange-text">*</span>:</ion-label>
+													<ion-textarea type="text" formControlName="description"
+														placeholder="{{ 'sesizareAddPage.observatiiPlaceholder' | translate }}">
+													</ion-textarea>
+												</ion-item>
+											</ion-col>
+										</ion-row>
+										<ion-row style="width: 100%">
+											<ion-col size="12">
+												<ion-item>
+													<ion-label position="floating">QR Code - blocator<span
+															class="orange-text">*</span>:</ion-label>
+													<ion-input type="text" formControlName="caracatita"
+														placeholder="Scanati QR CODUL">
+													</ion-input>
+												</ion-item>
+												<div *ngIf="(caracatita.dirty || caracatita.touched) && caracatita.errors"
+													class="errors">
+													<span *ngIf="caracatita.errors?.required">Camp obligatoriu</span>
+													<span *ngIf="caracatita.errors?.maxlength">Limita de 30 de caractere
+														a fost atinsa</span>
+													<span *ngIf="caracatita.errors?.minlength">Camp obligatoriu</span>
+												</div>
+											</ion-col>
+										</ion-row>
+										<ion-row>
+											<ion-col class="ion-padding text-left">
+												<small class="bluer-text"><strong>{{ 'sesizareAddPage.filesLabel' |
+														translate }}:</strong></small>
+												<ion-row *ngIf="sesizareFilesArr.length > 0">
+													<ion-col size="12">
+														<ion-row
+															*ngFor="let fileData of sesizareFilesArr; let i = index;">
+															<ion-col size="10">
+																<p class="file-label">
+																	<fa-icon icon="file" class="bluer-text"></fa-icon>
+																	{{fileData.original_name}}
+																</p>
+															</ion-col>
+															<ion-col size="2" (click)="emptyFileArr(i)"
+																class="center flex-center ion-justify-content-end">
+																<span class="bluer-text text-right">
+																	<fa-icon icon="times-circle" class="bluer-text">
+																	</fa-icon>
+																</span>
+															</ion-col>
+														</ion-row>
+													</ion-col>
+												</ion-row>
+												<ion-row *ngIf="sesizareFilesArr.length < 10">
+													<input type="file" #fileInput
+														(change)="uploadFile($event, 'file_description')" hidden="true"
+														accept="application/pdf,image/*" />
+													<ion-button type="button" size="small" fill="solid" color="primary"
+														(click)="selectImageSource('file_description')"
+														class="uppercase ion-margin-top">
+														<strong>{{'sesizareAddPage.addFileLabel' | translate}}</strong>
+													</ion-button>
+												</ion-row>
+											</ion-col>
+										</ion-row>
+										<ion-row>
+											<ion-col size="12">
+												<ion-button type="submit" expand="block" fill="solid" color="success"
+													class="uppercase ion-margin-top" [disabled]="!blockData.valid">
+													<strong>BLOCHEAZA</strong>
+												</ion-button>
+											</ion-col>
+										</ion-row>
+									</ion-col>
+								</form>
+							</ion-row>
+							<ion-row>
+								<ion-col>
+									<p>&nbsp;</p>
+									<p>&nbsp;</p>
+								</ion-col>
+							</ion-row>
+						</ion-col>
+					</ion-item>
+
+					<ion-item lines="none" *ngIf="solicitare.current_status == 6">
+						<ion-col size="12" *ngIf="formStepActiuni == 0">
+							<!-- <ion-button type="button" expand="block" fill="solid" color="success"
+								class="uppercase ion-margin-top">
+								<strong>PRINT PV BLOCAT</strong>
+							</ion-button> -->
+						</ion-col>
+
+						<ion-col size="12" *ngIf="formStepActiuni == 1" class="ion-no-padding">
+							<ion-button type="button" size="small" fill="solid" color="secondary" class="uppercase"
+								(click)="formStepActiuni = 0"><fa-icon icon="arrow-left"></fa-icon> &nbsp; Inapoi</ion-button>
+
+							<hr />
+							<form [formGroup]="blockedCetateanData" (ngSubmit)="fillCetateanData()"
+								class="registerForm full-width ion-no-padding">
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Nume: <span class="red-text">*</span>
+											</ion-label>
+											<ion-input type="text" formControlName="nume" placeholder="....">
+											</ion-input>
+										</ion-item>
+										<div *ngIf="(nume.dirty || nume.touched) && nume.errors" class="errors">
+											<span *ngIf="nume.errors?.required">Camp obligatoriu</span>
+											<span *ngIf="nume.errors?.maxlength">Limita de 30 de caractere a
+												fost atinsa</span>
+											<span *ngIf="nume.errors?.minlength">Camp obligatoriu</span>
+										</div>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Prenume: <span class="red-text">*</span>
+											</ion-label>
+											<ion-input type="text" formControlName="prenume" placeholder="....">
+											</ion-input>
+										</ion-item>
+										<div *ngIf="(prenume.dirty || prenume.touched) && prenume.errors"
+											class="errors">
+											<span *ngIf="prenume.errors?.required">Camp obligatoriu</span>
+											<span *ngIf="prenume.errors?.maxlength">Limita de 30 de caractere a
+												fost atinsa</span>
+											<span *ngIf="prenume.errors?.minlength">Camp obligatoriu</span>
+										</div>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> CI Serie: <span class="red-text">*</span>
+											</ion-label>
+											<ion-input type="text" formControlName="ci_serie" placeholder="....">
+											</ion-input>
+										</ion-item>
+										<div *ngIf="(ci_serie.dirty || ci_serie.touched) && ci_serie.errors" class="errors">
+											<span *ngIf="ci_serie.errors?.required">Camp obligatoriu</span>
+											<span *ngIf="ci_serie.errors?.maxlength">Limita de 30 de caractere a
+												fost atinsa</span>
+											<span *ngIf="ci_serie.errors?.minlength">Camp obligatoriu</span>
+										</div>
+									</ion-col>
+
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> CI Numar: <span class="red-text">*</span>
+											</ion-label>
+											<ion-input type="text" formControlName="ci_numar" placeholder="....">
+											</ion-input>
+										</ion-item>
+										<div *ngIf="(ci_numar.dirty || ci_numar.touched) && ci_numar.errors" class="errors">
+											<span *ngIf="ci_numar.errors?.required">Camp obligatoriu</span>
+											<span *ngIf="ci_numar.errors?.maxlength">Limita de 30 de caractere a
+												fost atinsa</span>
+											<span *ngIf="ci_numar.errors?.minlength">Camp obligatoriu</span>
+										</div>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> CUI:
+											</ion-label>
+											<ion-input type="number" formControlName="cnp" placeholder="....">
+											</ion-input>
+										</ion-item>
+										<div *ngIf="(cnp.dirty || cnp.touched) && cnp.errors" class="errors">
+											<span *ngIf="cnp.errors?.required">Camp obligatoriu</span>
+											<span *ngIf="cnp.errors?.maxlength">Limita de 30 de caractere a
+												fost atinsa</span>
+											<span *ngIf="cnp.errors?.minlength">Camp obligatoriu</span>
+										</div>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Denumire Companie: 
+											</ion-label>
+											<ion-input type="text" formControlName="f_nume" placeholder="....">
+											</ion-input>
+										</ion-item>
+									</ion-col>
+								</ion-row> 
+
+								<!-- <ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Telefon: 
+											</ion-label>
+											<ion-input type="number" formControlName="telefon" placeholder="....">
+											</ion-input>
+										</ion-item>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Email: 
+											</ion-label>
+											<ion-input type="email" formControlName="email" placeholder="....">
+											</ion-input>
+										</ion-item>
+									</ion-col>
+								</ion-row> -->
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Locatie: <span class="red-text">*</span>
+											</ion-label>
+											<ion-select formControlName="locatie" okText="Confirmă"
+												placeholder="Alegeți" cancelText="Anulați"
+												class="text-right full-width size15">
+												<ion-select-option *ngFor="let row of locatiiType" [value]="row.id">
+													{{row.label}}
+												</ion-select-option>
+											</ion-select>
+										</ion-item>
+										
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col  class="ion-no-padding">
+										<ion-item>
+											<ion-label position="stacked"> Observatii:
+											</ion-label>
+											<ion-textarea rows="2" formControlName="observatii" placeholder="....">
+											</ion-textarea>
+										</ion-item>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col class="ion-padding text-left">
+										<small class="bluer-text"><strong>{{ 'sesizareAddPage.filesLabel' |
+												translate }} - CI/Pasaport/Delegatie/Documente identificare:</strong></small>
+										<ion-row *ngIf="sesizareFilesArr.length > 0">
+											<ion-col size="12">
+												<ion-row *ngFor="let fileData of sesizareFilesArr; let i = index;">
+													<ion-col size="10">
+														<p class="file-label">
+															<fa-icon icon="file" class="bluer-text"></fa-icon>
+															{{fileData.original_name}}
+														</p>
+													</ion-col>
+													<ion-col size="2" (click)="emptyFileArr(i)"
+														class="center flex-center ion-justify-content-end">
+														<span class="bluer-text text-right">
+															<fa-icon icon="times-circle" class="bluer-text">
+															</fa-icon>
+														</span>
+													</ion-col>
+												</ion-row>
+											</ion-col>
+										</ion-row>
+										<ion-row *ngIf="sesizareFilesArr.length < 10">
+											<input type="file" #fileInput
+												(change)="uploadFile($event, 'file_description')" hidden="true"
+												accept="application/pdf,image/*" />
+											<ion-button type="button" size="small" fill="solid" color="primary"
+												(click)="selectImageSource('file_description')"
+												class="uppercase ion-margin-top">
+												<strong>{{'sesizareAddPage.addFileLabel' | translate}}</strong>
+											</ion-button>
+										</ion-row>
+									</ion-col>
+								</ion-row>
+
+								<ion-row>
+									<ion-col size="12" class="ion-no-padding">
+										<ion-button type="submit" expand="block" fill="solid" color="success"
+											class="uppercase ion-margin-top" [disabled]="!blockedCetateanData.valid">
+											<strong>Salveaza</strong>
+										</ion-button>
+									</ion-col>
+								</ion-row>
+
+							</form>
+
+						</ion-col>
+					</ion-item>
+
+					<ion-item lines="none" *ngIf="solicitare.current_status == 7 && solicitare.info.b_date !== null">
+						<ion-col size="12">
+							<ion-button type="button" expand="block" fill="solid" color="success" (click)="paymentPOS()"
+								class="uppercase ion-margin-top">
+								<strong>ACHITA</strong>
+							</ion-button>
+						</ion-col>
+					</ion-item>
+
+					<ion-item lines="none" *ngIf="solicitare.current_status == 11">
+						<ion-col size="12">
+							<form [formGroup]="deblockData" (ngSubmit)="deblockAuto()" class="registerForm full-width">
+								<ion-col class="ion-no-padding">
+									<ion-row style="width: 100%">
+										<ion-col size="12">
+											<ion-item>
+												<ion-label position="floating">{{ 'sesizareAddPage.observatiiLabel' |
+													translate }}<span class="orange-text">*</span>:</ion-label>
+												<ion-textarea type="text" formControlName="description"
+													placeholder="{{ 'sesizareAddPage.observatiiPlaceholder' | translate }}">
+												</ion-textarea>
+											</ion-item>
+										</ion-col>
+									</ion-row>
+
+									<!-- add aici 4 input fields -->
+									<ion-row *ngIf="solicitare.cetateanBlocat.ci_serie == null">
+										<ion-col  class="ion-no-padding">
+											<ion-item>
+												<ion-label position="stacked"> CI Serie: <span class="red-text">*</span>
+												</ion-label>
+												<ion-input type="text" formControlName="ci_serie" placeholder="....">
+												</ion-input>
+											</ion-item>
+										</ion-col>
+	
+										<ion-col  class="ion-no-padding">
+											<ion-item>
+												<ion-label position="stacked"> CI Numar: <span class="red-text">*</span>
+												</ion-label>
+												<ion-input type="number" formControlName="ci_numar" placeholder="....">
+												</ion-input>
+											</ion-item>
+										</ion-col>
+									</ion-row>
+	
+									<ion-row *ngIf="solicitare.cetateanBlocat.ci_serie == null">
+										<ion-col  class="ion-no-padding">
+											<ion-item>
+												<ion-label position="stacked"> CUI:
+												</ion-label>
+												<ion-input type="number" formControlName="cnp" placeholder="....">
+												</ion-input>
+											</ion-item>
+										</ion-col>
+									</ion-row>
+	
+									<ion-row *ngIf="solicitare.cetateanBlocat.ci_serie == null">
+										<ion-col  class="ion-no-padding">
+											<ion-item>
+												<ion-label position="stacked"> Denumire Companie: 
+												</ion-label>
+												<ion-input type="text" formControlName="f_nume" placeholder="....">
+												</ion-input>
+											</ion-item>
+										</ion-col>
+									</ion-row> 
+
+									<ion-row *ngIf="solicitare.cetateanBlocat.ci_serie == null">
+										<ion-col  class="ion-no-padding">
+											<ion-item>
+												<ion-label position="stacked"> Locatie: <span class="red-text">*</span>
+												</ion-label>
+												<ion-select formControlName="locatie" okText="Confirmă"
+													placeholder="Alegeți" cancelText="Anulați"
+													class="text-right full-width size15">
+													<ion-select-option *ngFor="let row of locatiiType" [value]="row.id">
+														{{row.label}}
+													</ion-select-option>
+												</ion-select>
+											</ion-item>
+											
+										</ion-col>
+									</ion-row>
+
+									<!-- end 4 fields -->
+
+
+									<ion-row>
+										<ion-col class="ion-padding text-left">
+											<small class="bluer-text"><strong>{{ 'sesizareAddPage.filesLabel' |
+													translate }}:</strong></small>
+											<ion-row *ngIf="sesizareFilesArr.length > 0">
+												<ion-col size="12">
+													<ion-row *ngFor="let fileData of sesizareFilesArr; let i = index;">
+														<ion-col size="10">
+															<p class="file-label">
+																<fa-icon icon="file" class="bluer-text"></fa-icon>
+																{{fileData.original_name}}
+															</p>
+														</ion-col>
+														<ion-col size="2" (click)="emptyFileArr(i)"
+															class="center flex-center ion-justify-content-end">
+															<span class="bluer-text text-right">
+																<fa-icon icon="times-circle" class="bluer-text">
+																</fa-icon>
+															</span>
+														</ion-col>
+													</ion-row>
+												</ion-col>
+											</ion-row>
+											<ion-row *ngIf="sesizareFilesArr.length < 10">
+												<input type="file" #fileInput
+													(change)="uploadFile($event, 'file_description')" hidden="true"
+													accept="application/pdf,image/*" />
+												<ion-button type="button" size="small" fill="solid" color="primary"
+													(click)="selectImageSource('file_description')"
+													class="uppercase ion-margin-top">
+													<strong>{{'sesizareAddPage.addFileLabel' | translate}}</strong>
+												</ion-button>
+											</ion-row>
+										</ion-col>
+									</ion-row>
+									<ion-row>
+										<ion-col size="12">
+											<ion-button type="submit" expand="block" fill="solid" color="success"
+												class="uppercase ion-margin-top" [disabled]="!deblockData.valid">
+												<strong>DEBLOCHEAZA</strong>
+											</ion-button>
+										</ion-col>
+									</ion-row>
+								</ion-col>
+							</form>
+						</ion-col>
+					</ion-item>
+
+					<ion-item lines="none" *ngIf="solicitare.current_status == 8">
+						<ion-col size="12">
+							<ion-button type="button" expand="block" fill="solid" color="success"
+								class="uppercase ion-margin-top" (click)="printPVDeblocare()">
+								<strong>PRINT PV DEBLOCARE</strong>
+							</ion-button>
+						</ion-col>
+					</ion-item>
+
+				</ion-list>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<!-- fab placed to the bottom and start and on the bottom edge of the content overlapping footer with a list to the right -->
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+		<a href="{{link_go}}" target="_blank">
+			<ion-fab-button color="primary">
+				<ion-icon name="navigate-outline"></ion-icon>
+			</ion-fab-button>
+		</a>
+	</ion-fab>
+
+	<ion-fab vertical="bottom" horizontal="start" slot="fixed" *ngIf=" showTab == 'actiuni' && 
+	[5,6,7,11].includes(solicitare.current_status) && 
+	(solicitare.info.b_date == null || solicitare.info.d_date == null)">
+		<ion-fab-button color="secondary" (click)="scanQRBlocator()">
+			<ion-icon name="qr-code-outline"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="home" mode="md"></ion-back-button>
+		</ion-buttons>
+		<ion-title>
+			<ion-title>Inregistrare Activitate Zi</ion-title>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="signTeamDayClass">
+	<ion-grid *ngIf="loaded == 1">
+		<ion-row class="whiteBg">
+			<ion-col>
+				<p *ngIf="teamSelected == 0" class="text-center"><strong>Alegeti Echipa din care faceti parte</strong></p>
+				<p *ngIf="teamSelected !== 0" class="text-center">Faceti parte din Echipa <strong>{{teamSelectedLabel}}</strong> pentru ziua curenta</p>
+			</ion-col>
+		</ion-row>
+		<ion-row class="whiteBg" *ngIf="teamSelected == 0">
+			<ion-col class="team-wrap">
+				<div *ngFor="let row of teamsList" (click)="selectTeam(row)" class="team-box ion-padding"
+					[ngStyle]="{'background' : row.bg }"
+				>{{row.label}}</div>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="teamSelected !== 0">
+			<ion-col>
+				<ion-button type="button" expand="block" color="danger" class="ion-margin-top" (click)="cancelTeam()">
+					Anuleaza Echipa Curenta
+				</ion-button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

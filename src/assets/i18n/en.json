@@ -1,0 +1,697 @@
+{
+	"FOLLOW": "Follow",
+	"MESSAGE": "Message",
+	"LIKES": "Likes",
+	"FOLLOWERS": "Followers",
+	"FOLLOWING": "Following",
+	"ABOUT": "About",
+	"FRIENDS": "Friends",
+	"PHOTOS": "Photos",
+	"SEE_ALL": "See all",
+	"OK": "OK",
+	"CANCEL": "Cancel",
+	"SELECT_LANGUAGE": "Select your language",
+    "alert" : {
+        "generalErrMsg" : "We encountered an error processing your request. Please try again. If the problem persists, please access the support button to submit a notification.",
+        "alertHeader" : "Alert",
+        "alertCloseBtnText": "Close",
+        "alertSuportITText": "Support IT",
+        "suportURL": "https://www.mobilitateurbana4.ro/registratura-online/?d=6&t=20",
+        "alertHeaderSuccess" : "Success",
+        "alertStandardMessageSuccess": "Your account has been updated"
+    },
+    "loadingsScreen" : "Please wait...",
+    "loginPage" : {
+		"titleSection" : "Login",
+        "authBtnLabel" : "Login",
+        "form" : {
+            "email" : "Email",
+            "password" : "Password",
+            "keepCredentials" : "Remember me",
+            "emailRequired" : "Email is required",
+            "emailInvalid" : "Email is invalid",
+            "passwordRequired" : "Password is required",
+            "passwordMinLength" : "Password needs to be at least 8 characters",
+            "passwordMaxLength" : "Password needs to be max 30 characters"
+        },
+        "passwordForgotten" : "Forgotten password?",
+        "noAccountLabel" : "No account?",
+        "noAccountBtnLabel" : "Sign Up",
+        "accountConfirmedText" : "Your account is confirmed. Your can now login."
+    },
+    "forgotPage" : {
+        "titleSection": "Forgotten password",
+        "submitBtnLabel" : "Reset Password",
+        "emailInvalidWarning" : "Your email address is invalid.",
+        "passwordResetSuccess": "Your password has been updated. You can now login.",
+        "resendCodeSMS" : "Didn't receive your code yet? Resend code now.",
+        "valabilityCode" : "Your SMS code is valid for 1hr to change your password.",
+        "confirmSMSCodeLabel" : "Confirm",
+        "introTextSMSCode" : "Please insert your code received via SMS.",
+        "smsCodeSent" : "A new code has been sent via SMS.",
+        "submitNewPassBtnLabel" : "Update",
+        "confirmPassLabelInput" : "Confirm Password",
+        "minMaxPassord" : "Password has to be between 8 and 30 characters long",
+        "minMaxPasswordConfirmation" : "Password confirmation has to be between 8 and 30 characters long",
+        "passwordsMissmatch" : "Passwords missmatch. Please check",
+        "confirmCodeSMSInvalid" : "Code must have 5 digits."
+    },
+    "pageRegister" : {
+        "titleSection": "New Account",
+        "successNewAccountTitle" : "Your new account has been created. You can login now with your email and password chosen.",
+        "successNewAccountContent" : "Your account needs validation. An agent has to verify all the information and all the documents attached and the timeframe for your account confirmation is between 24-48 hours.",
+        "form" : {
+            "registerBtnLabel" : "Register",
+            "agreeWithLabelPart1" : "I agree with ",
+            "agreeWithLabelPart2" : "the terms and conditions of Primăriei Municipiului București Sector 4",
+            "requiredFields" : "- Required fields",
+            "smsConfirmInfo": "The confirmation of your account it will be made via a code sent to your phone number through an SMS.",
+            "supportITLabel" : "Technical support:",
+            "here" : "here",
+            "fileLabel" : "Add",
+            "fileCUILabel" : "CUI Photo/Document",
+            "fileCNPLabel" : "CI Photo/Document ",
+            "passwordConfirmLabel" : "Password Confirm",
+            "passwordLabel" : "Password",
+            "companyLabel" : "Company name",
+            "emailLabel" : "Email",
+            "cnpcuiLabel" : "CNP/CUI",
+            "cnpcuiLabelInfo" : "(Required for full access)",
+            "phoneLabel" : "Phone",
+            "lastnameLabel" : "Lastname",
+            "firstnameLabel" : "Firstname",
+            "phoneMinRequired" : "Phone number too short.",
+            "phoneMaxRequired" : "Phone number too long",
+            "phoneRequired" : "Required field",
+            "phoneRegex" : "Phoone number is not valid",
+            "nameRequired" : "Required field",
+            "nameMinLength" : "Input field must be between 2 and 60 characters",
+            "nameMaxLength" : "Input field must be between 2 and 60 characters",
+            "cnpCuiFilledInfo" : "The field named CNP/CUI is optional, but is required if you want to have the possibility to acces all the modules inside the mobile app(Like 'Payments' - Taxe și Impozite, Parking taxes, Access to your parking spot). The full version is destined for all citizens of Sectorului 4",
+            "phoneModal" : {
+                "phoneModalTitle" : "Select Country",
+                "phoneModalSearchLabel" : "Enter country name",
+                "phoneModalCloseText" : "Close",
+                "phoneSearchFailSearch" : "No countries found."
+            },
+            "fillAllRequiredFiles" : "Please fill all required fields",
+            "companyRequired": "Please fill 'Company'",
+            "invalidCI" : "CI/CUI has a maximum of 13 characters"
+        },
+        "fileLabels" : {
+            "wrongExtension": "Wrong file upload. Your uploaded extension is: ",
+            "successUpload" : "File upload success",
+            "failUpload": "File upload fail.",
+            "failOpenChooser" : "Failed in opening your file chooser. Please see permissions.",
+            "addBtnLabel": "Add",
+            "toastHeader" : "Choose Picture/Document",
+            "takePhoto" : "Take Photo",
+            "galleryPhoto" : "Choose from Gallery",
+            "device": "Choose a document",
+            "fileCIRequired" : "Please attach a CI Photo/Document",
+            "fileCUIRequired" : "Please attach a CUI Photo/Document"
+        }
+    },
+    "dashboardPage" : {
+        "titleSection" : "City Hall of Sector 4",
+        "mainLinks" : {
+            "addSesizare" : "Add a Notification",
+            "parking" : "Parking@4",
+            "plati" : "Payments",
+            "noutati": "News from Sectorul 4",
+            "evidenta" : "Appointments",
+            "evidentaRow2" : "Person records",
+            "taxe" : "Registration of",
+            "taxeRow2" : "taxes and duties",
+            "urbanism": "Urbanism Requests",
+            "autorizari": "Commercial Authorizations",
+            "utile": "Useful",
+            "sondaje": "Participate in the survey",
+            "callCenter": "Call-center"
+        },
+        "introText": "Welcome, ",
+        "noRolFiscal": "Contului Dumneavoastră nu ii este atribuit un CNP/CUI pentru a putea activa secțiunea Plăți. Pentru a avea acces la Secțiunea Plăți, vă rugăm să asociați un CNP/CUI acestui cont.",
+        "accountNotValidated": "Contul Dumneavoastră nu a fost încă validat. Pentru a avea acces in această secțiune este necesară validarea contului."
+    },
+    "utilePage": {
+        "titleSection" : "Useful",
+        "closeButtonLabel": "Close",
+        "chooseHeader": "Choose"
+    },
+    "noutatiPage" : {
+        "titleSectionArticles": "News from Sectorul 4",
+        "titleSectionGallery": "Sectorul 4 in Pictures",
+        "closeButtonLabel": "Close",
+        "chooseHeader": "Choose",
+        "seeArticleBtnLabel": "VIEW NOW"
+    },
+    "sondajePage": {
+        "titleSection" : "Surveys",
+        "activLabel": "ACTIVE SURVEYS",
+        "historyLabel": "HISTORY SURVEYS",
+        "viewSondajBtnLabel": "Check Results",
+        "finishedAtLabel" : "Finished at ",
+        "noRecords": "No active surveys",
+        "rezultateLabel": "Results",
+        "choiceLabel": "Choose",
+        "voteAtLabel": "You participated at  ",
+        "sondajBetween": "Survey between ",
+        "participateSondajTitle": "Fill Survey",
+        "participateBtnLabel": "Fill Survey",
+        "expiresAt": "Expires at ",
+        "confirmParticipationHeader" : "Confirm participation to survey?",
+        "confirmParticipationSubHeader" : "Are you really sure about the choice you make?",
+        "conformParticipationButtonCancelLabel": "Close",
+        "conformParticipationButtonConfirmLabel" : "Confirm"
+    },
+    "settingsPage": {
+        "titleSection" : "Settings",
+        "notiticationLabel": "Notifications",
+        "userLabel": "User email",
+        "changePasswordLabel": "Change password",
+        "appVersionLabel": "App version",
+        "evaluateAppLabel":"Review App",
+        "termsLabel": "Terms and conditions",
+        "rolFiscalActive": "You have already a CNP|CUI associated to your account."
+    },
+    "profilePasswordPage" : {
+        "titleSection": "Password Update",
+        "submitNewPassBtnLabel" : "Update",
+        "confirmPassLabelInput" : "Confirm Password",
+        "minMaxPassord" : "Password has to be between 8 and 30 characters long",
+        "minMaxPasswordConfirmation" : "Password confirmation has to be between 8 and 30 characters long",
+        "passwordsMissmatch" : "Passwords missmatch. Please check"
+    },
+    "profileAddRolePage": {
+        "titleSection": "Add CNP/CUI",
+        "cnpcuiLabel" : "CNP/CUI",
+        "cnpcuiLabelInfo" : "(Required for full access)",
+        "companyLabel" : "Company name",
+        "invalidCI" : "CI/CUI has a maximum of 13 characters",
+        "fileLabel" : "Add",
+        "fileCUILabel" : "CUI Photo/Document",
+        "fileCNPLabel" : "CI Photo/Document ",
+        "registerBtnLabel" : "Register",
+        "agreeWithLabelPart1" : "I agree with ",
+        "agreeWithLabelPart2" : "the terms and conditions of Primăriei Municipiului București Sector 4",
+        "requiredFields" : "- Required fields",
+        "here" : "here",
+        "companyRequired": "Please fill 'Company'"    
+    },
+    "profilePage": {
+        "titleSection": "My account",
+        "submitBtnLabel" : "Update"
+    },
+    "profileUpdatePage": {
+        "titleSection": "Update Information",
+        "submitBtnLabel" : "Update"
+    },
+    "sesizarePage" : {
+        "titleSection": "Notifications",
+        "footerList": "My Notifications",
+        "footerAdd": "Add a Notification",
+        "sections": {
+            "groapa": "PIT",
+            "masinaAbandonata": "ABANDONED CAR",
+            "gunoi": "TRASH",
+            "mobilierUrban": "URBAN FURNITURE",
+            "reabilitareTermica": "THERMAL REHABILITATION",
+            "parcuriSiSpatiiVerzi": "PARKS AND GREEN SPACES",
+            "parcari": "PARKING",
+            "parcareIlegala": "ILLEGAL PARKING",
+            "asistentaSociala": "SOCIAL ASSISTANCE",
+            "comertNeautorizat": "UNAUTHORIZED TRADE",
+            "deszapezire": "REPORT SNOW",
+            "altaSesizare": "ANOTHER TYPE OF NOTIFICATION",
+            "parcareIlegalaAutoSesizare": "AUTOSESIZARE"
+        },
+        "noRecords": "No records available"
+    },
+    "sesizareChoicePage" : {
+        "titleSection": "SOCIAL ASSISTANCE",
+        "subheaderSection": "Please choose Your problem",
+        "sections": {
+            "copilRatacit": "Lost / abandoned child",
+            "copilRisc": "Child at risk (begging, neglected, abused, exploited)",
+            "copilFaraAdapost": "Homeless child",
+            "violentaJuvenila": "Juvenile violence",
+            "persoaneFaraAdapost": "Homeless adults",
+            "persoaneAfectiuniPsihice": "Adults with manifestations that indicate possible mental illness",
+            "violentaDomestica": "Domestic violence",
+            "persoanaStrada": "Homeless man",
+            "persoaneVarstnice": "Elderly / adults / people with disabilities without legal relatives",
+            "deces": "Deaths at home (deceased person has no relative)"
+        },
+        "titleSections": {
+            "copilCategory": "PROTECTION OF THE RIGHTS OF THE CHILD",
+            "persoanaCategory": "PROTECTION OF ADULT RIGHTS"
+        }
+    },
+    "sesizareAddPage": {
+        "titleSection": "New Notification - ",
+        "addressLabel": "Address",
+        "filesLabel": "Photos/Documents",
+        "observatiiLabel": "Description",
+        "requiredField": "Required field",
+        "observatiiPlaceholder": "Please insert your notes...",
+        "addFileLabel": "Add",
+        "submitBtnLabel": "SEND",
+        "successMessagePart1" : "Notification number #",
+        "successMessagePart2" : "was sent successfully",
+        "errorLoadingMapGeo" : "We encountered a problem in loading your location services. Please verify that you have location services on",
+        "pleaseWaitGettingYourLocationLabel": "Trying to get your current location...",
+        "fillAllRequiredFiles" : "Please fill all required fields",
+        "noLocationFound": "Este necesar să activați locația dispozitivului dumneavoastră."
+    },
+    "sesizareViewPage": {
+        "titleSection": "Notification",
+        "addFileLabel": "Add",
+        "submitBtnLabel": "SEND",
+        "observatiiLabel": "Please insert your notes...",
+        "observatiiPlaceholder": "Please insert your notes...",
+        "requiredField": "Required field",
+        "filesLabel": "Photos/Documents",
+        "fillAllRequiredFiles" : "Please fill all required fields",
+        "successMessageLabel": "Message sent successfully",
+        "smallSectionInfoSesizare": "#Info Notification",
+        "smallSectionAddMessageSesizare": "#Add Message",
+        "smallSectionHistoryMessagesSesizare": "#History Messages"
+    },
+    "sesizariChoiceLocParcarePage" : {
+        "titleSection": "Locuri de parcare"
+    },
+    "paymentsMainPage" : {
+        "titleSectionObligatii": "Payments - Payment obligations",
+        "titleSectionIstoricPlati": "Payment History",
+        "titleSectionCarduriSalvate": "My cards",
+        "allTaxesPaid": "Congratulations, all fees are paid on time",
+        "obligatiiDePlataLabel": "Payment obligations",
+        "itemsBilling": {
+            "descriptionLabel": "Description",
+            "numarAutoLabel": "License plate",
+            "parcareLabel" : "Parking spot",
+            "totalToPayLabel": "Total to pay",
+            "totalTipPaymentLabelPart1": "Total ",
+            "totalTipPaymentLabelPart2": " current year",
+            "ramasitaLabel": "Remnant",
+            "majorariLabel": "Increases",
+            "bonificatiiLabel": "Bonuses",
+            "paymentItemBtnLabel": "Pay now"
+        },
+        "noPaymentMadeIstoricLabel": "You have no payments made so far.",
+        "paymentDateIstoricLabel": "Payment date",
+        "paymentTotalIstoricLabel": "Total payed",
+        "paymentMetodaIstoricLabel": "Payment method",
+        "paymentGeneralPart1": "Pay ",
+        "paymentGeneralPart2": " out of ",
+        "paymentGeneralpart3": " taxes:",
+        "noCardsSavedLabel": "You have no cards saved so far.",
+        "deleteLabel": "Delete",
+        "noCardsSaved": "Number of cards Saved",
+        "categories": {
+            "dgitlTitleSection": "Taxes and fees",
+            "dmuTitleSection": "Parking"
+        },
+        "cantPayLabel1": "Can't pay  ", 
+        "cantPayLabel2": " before selecting all other bills in front of this one",
+        "successPaymentLabel": "Your payment has been successfull. The registration of your payment could take up to 3 days to see in your account",
+        "paymentAlertMsg": "We are sorry, but we encounter a problem in processing your payment. Please try again.",
+        "popUpInfo": {
+            "choosePaymentType" : "Please choose how do you want to make the payment",
+            "newCard": "New Card",
+            "existingCard": "Payment with a registered card",
+            "cancel": "Cancel",
+            "existingCardHeader": "Choose a registered card",
+            "wishToHavePreexistingCard": "Do you wish to save the card for future payments?",
+            "yes": "Yes",
+            "no": "No, I do not want to register my card",
+            "confirmRemoveCard": "Are you sure you want to remove this card? **** **** **** ",
+            "confirmRemoveCardMessage": "Card removed from your account.",
+            "confirm": "Confirm",
+            "anulati": "Cancel"
+        },
+        "tipTaxePriorities": {
+            "dgitl": "Fines and Taxes have a bigger priority at payment than the rest. Please select your Fines/Taxes from your list to pay",
+            "dmu": "Your Parking Tax/Subscription to Public Parking have a bigger priority at payment than the rest."
+        }
+    },
+    "locuriParcarePage": {
+        "titleSection": "Locuri parcare",
+        "noRecords": "Nu aveți niciun loc de parcare atribuit contului dvs.",
+        "detailsLocParcareLabel": "Details",
+        "cancelAlert": "Cancel",
+        "selectActionSheetHeader": "Select your topic"
+    },
+    "registraturaParkingPage": {
+        "titleSection": "Registratura Online Parcări",
+        "footerSectionAdd": "Adaugă o solicitare",
+        "footerSectionList": "Solicitarile mele",
+        "formAlertLabels": {
+            "detailsLocParcareLabel": "Details",
+            "cancelAlert": "Cancel"
+        },
+        "formLabels": {
+            "resedinta": {
+                "modificareDateAuto": "Modificare date autovehicul(Schimbare auto)",
+                "modificareNumeTitular": "Modificare nume titular(căsătorie/divorț/schimbare nume)",
+                "actualizareDateContrat": "Actualizare date contract - TALON AUTO/RCA",
+                "solicitareReziliereContract": "Solicitare reziliere contract",
+                "solicitareMontareBlocator": "Solicitare montare blocator pentru locul de parcare",
+                "sesizarePrivindNumerotareaLoculuiDeParcare": "Sesizare privind marcarea/numerotarea locului de parcare",
+                "cerereReemitereCard": "Cerere Reemitere card parcare"
+            },
+            "publice": {
+                "modificareDateAuto": "Modificare date autovehicul(Schimbare auto)",
+                "modificareNumeTitular": "Modificare nume titular(căsătorie/divorț/schimbare nume)",
+                "actualizareDateContrat": "Actualizare date contract - TALON AUTO/RCA",
+                "solicitareReziliereContract": "Solicitare reziliere contract",
+                "cerereReemitereCard": "Cerere Reemitere card parcare"
+            }
+        },
+        "choicesDashboard": {
+            "headerTopic": "Alegeți o categorie",
+            "parcariResedinta": "Parcări Reședință",
+            "parcariPublice": "Parcări Publice",
+            "transportAlternativ": "Transport alternativ",
+            "monitorizareSmartCity": "Monitorizare SMART CITY",
+            "audiente": "Audiențe",
+            "technicalSuport" : "Suport tehnic"
+        },
+        "successRegisterTicketPart1": "Solicitarea cu numarul #",
+        "successRegisterTicketPart2": " a fost trimisă cu succes. Urmează să primiți un e-mail de confirmare la adresa de e-mail înregistrată.",
+        "anotherLocParcare": "Alt loc de parcare",
+        "noRecords": "Nu aveți nici o selicitare înregistrată",
+        "one": {
+            "titleSection": "Solicitare",
+            "rcaLabel": "RCA",
+            "itpLabel":"ITP",
+            "handicapLabel": "Certificat Persoane Dizabilități",
+            "smallSectionInfo": "#Info Notification"
+        },
+        "choice": {
+            "titleSectionResedinta": "Parcare Reședință",
+            "titleSectionPublice": "Parcare Publică",
+            "categoryChoice": "Alegeți tipul problemei"
+        },
+        "locuriParcare": {
+            "titleSectionResedinta": "Parcare Reședință",
+            "titleSectionPublice": "Parcare Publică",
+            "categoryChoice": "Alegeți locul de parcare"
+        },
+        "registraturaPage": {
+            "titleSection": {
+                "parcariResedinta": "Parcări Reședință",
+                "parcariPublice": "Parcări Publice",
+                "transportAlternativ": "Transport alternativ",
+                "monitorizareSmartCity": "Monitorizare SMART CITY",
+                "audiente": "Audiențe",
+                "technicalSuport" : "Suport tehnic"
+            },
+            "controls": {
+                "beforeSlide": "Pasul precedent",
+                "nextSlide": "Următorul pas",
+                "submitForm": "Trimite solicitarea"
+            },
+            "formLabels": {
+                "addFileLabel": "Adaugă"
+            },
+            "noRecordsAddress": "Lipsă Înregistrări",
+            "fillAllRequiredFiles" : "Please upload all required files",
+            "fillAllRequiredInputs": "Please fill all required fields."
+        }
+    },
+    "locuriParcareDetaliiPage" : {
+        "titleSection": "Detalii loc parcare",
+        "rcaLabel": "RCA",
+        "itpLabel":"ITP",
+        "soldLabel": "Sold",
+        "debitLabel": "Debit",
+        "contractLabel": "Ctr"
+    },
+    "parkingPublice": {
+        "titleSection": {
+            "publiceTitle": "Parcări Publice",
+            "resedintaTitle": "Parcări de Reședință"
+        },
+        "footerSection": {
+            "parking": "Parcări",
+            "map": "Hartă",
+            "payments": "Plăți"
+        },
+        "orderSelect": {
+            "label": "Ordoneaza după",
+            "confirm": "Confirmă",
+            "cancel": "Anulați",
+            "distance": "Distanță",
+            "name": "Nume",
+            "freeSpots": "Locuri libere"
+        },
+        "paymentSelect" : {
+            "selectParking": "Selectati Parcarea",
+            "confirmText" : "Confirmă",
+            "cancelText": "Anulați"
+        },
+        "labels": {
+            "parkingLabel": "Parcare",
+            "totalParkingSpots": "Total locuri:",
+            "teGrabesti": "Te grăbești?",
+            "scanTicket": "Scanează tichetul",
+            "payBtnLabel": "PLĂTEȘTE",
+            "backButton": "Înapoi",
+            "parkingZone": "Zonă parcare",
+            "entrancePark": "Dată intrare",
+            "ticketCode": "Cod Tichet",
+            "plateNo": "Numar Auto",
+            "lastPayment": "Ultima achitare",
+            "card": "CARD",
+            "vatIncluded": "(TVA inclus)",
+            "sms": "SMS",
+            "vatNotIncluded": "(+ TVA)",
+            "notAvailable": "Indisponibil",
+            "ron": "RON",
+            "eur": "EUR",
+            "registraturaOnline": "Registratură online",
+            "regulamentLabel": "Regulament",
+            "faq": "Întrebări frecvente",
+            "payments": "Plăți",
+            "getLocParcare": "SOLICITĂ UN LOC DE PARCARE",
+            "ticketPaymentSuccessClosedParking": "Plata a fost confirmată cu succes. Aveți la dispoziție 15 min să părăsiți parcarea.",,
+            "ticketPaymentSuccessStradaleParking": "Plata a fost confirmată cu succes.",
+            "codQRLabel1": "Codul QR se află pe panourile instalate în",
+            "codQRLabel2": "parcările publice stradale",
+            "fastPay": "Plătește rapid! ",
+            "scanQR": "Scanează codul QR",
+            "scanTicketLegend1": "Tichetul emis la intrarea în",
+            "scanTicketLegend2": "parcările publice prevăzute cu barieră",
+            "requiredFields" : "Please fill all the required fields."
+        }
+    },
+    "modalFAQPage": {
+        "titleSection": "FAQ"
+    },
+    "parcarePage": {
+        "titleSection" : "Parcare",
+        "labels": {
+            "parkingLabel":"Parcare",
+            "totalParkingSpots" : "Total locuri",
+            "diszabilitatiLabel": "Locuri persoane cu dizabilități: ",
+            "electricLabel": "Locuri încărcare mașini electrice:",
+            "numLocuriLabel": "LOCURI",
+            "247": "24/24",
+            "paymentMethods": "Metode de plată:",
+            "paymentLabel": "Tarife",
+            "intervalOrar": "Interval tarifar ",
+            "abonamentNominal": "Abonament nominal",
+            "abonamentNenominal": "Abonament nenominal",
+            "persoaneFizice" : "Persoane fizice",
+            "persoaneJuridice": "Persoane juridice",
+            "valueAbonamente": "RON / lună",
+            "checkSMSPackages": "Vezi tarife SMS",
+            "regulament": "Regulament",
+            "faqLabel": "Întrebări frecvente",
+            "registraturaOnline": "Registratură Online",
+            "getLocParcare": "SOLICITĂ UN ABONAMENT",
+            "free" : "free"
+        }
+    },
+    "parcarePubliceZonaTarifareChoicePage" : {
+        "titleSection": "Alegeți Zona de tarifare",
+        "choice": "Alege",
+        "parcare": "Parcarea",
+        "choiceHeader": "Vă rugăm să alegeți o zonă tarifară",
+        "paymentDue": "Parcare achitată până la:",
+        "tarif": "Tarif"
+    },
+    "gisPage": {
+        "titleSectionResedinta": "Parcare de Reședință",
+        "titleSectionPublice": "Parcare Publică",
+        "placeholder": {
+            "resedinta": "Alegeți un parcaj",
+            "publice": "Introduceți adresa Dumneavoastră."
+        },
+        "successSolicitarePart1": "Solicitarea cu numarul #",
+        "successSolicitarePart2": " a fost trimisa cu succes. Urmeaza sa primiți un e-mail de confirmare la adresa de e-mail înregistrată.",
+        "sessionExpired": "Sesiunea dumneavoastra a expirat, timpul maxim de completare a solicitarii este de 15 minute.",
+        "suportOnlineLabel": "Suport Online",
+        "persoaneDizabilitatiLabel": "Persoane cu dizabilitati",
+        "insertYourAddress": "Introduceți adresa Dumneavoastră, apoi selectați locul ",
+        "green": "VERDE",
+        "wanted": " dorit",
+        "suportIntro": "*Accesați butonul Suport online DOAR în cazul unor probleme tehnice!",
+        "suportOnlineInfo": {
+            "titleSection": "Suport Online",
+            "resedinta": {
+                "firstSection": "Pentru a solicita un loc de parcare, vă rugăm selectați un loc disponibil (marcat cu verde). În cazul în care pentru adresa introdusă nu exista un loc de parcare disponibil pe o rază de 250 de metri, puteți să faceți o solicitare online în vederea identificării unor spații pentru amenajarea unor noi locuri de parcare, apăsând butonul 'Trimite o solicitare' (opțiune disponibilă în mesajul de avertizare de tip pop-up ce se afișează pe ecran în situația descrisă mai sus).",
+                "secondSection": "Pentru orice problemă vă rugăm să consultați întâi secțiunea",
+                "secondSectionfaq": "Întrebări Frecvente",
+                "thirdSection": " Pentru a afla condițiile și procedura de atribuire a locurilor de parcare de reședință, vă rugăm să consultați regulamentul privind atribuirea locurilor de parcare de reședință. Consultă regulamentul ",
+                "thirdSectionHere": " AICI",
+                "fourthSection": "Pașii pe care trebuie să îi parcurgeți îi regăsiți în următorul",
+                "fourthSectionVideo": "Tutorial Video (DEMO)",
+                "fifthSection": "Pentru achitarea taxei de parcare de reședință, vă rugăm să utilizați următoarele ",
+                "fifthSectionPaymentMethods": "metode de plată",
+                "sixthSection": "Dacă nu găsiți răspunsul la întrebarea care vă preocupă, cât și în cazul în care întâmpinați probleme tehnice sau doriți să depuneți o solicitare/sesizare, vă rugăm să accesați",
+                "sixthSectionRegistraturaOnline": "Registratura Online"
+            },
+            "publice": {
+                "firstSection": "Pentru a solicita un abonament, vă rugăm selectați parcajul dorit din lista afișată în colțul stânga-sus al ecranului, apoi selectați un loc disponibil (marcat cu verde). Nu se pot elibera abonamente pe locurile destinate persoanelor cu dizabilități, marcate cu ",
+                "firstSectionLabels": "locurile destinate încărcării autovehiculelor electrice, marcate cu ",
+                "firstSectionLabelsP2": " și locurile destinate parcarii pe interval orar, marcate cu",
+                "secondSection": "Pentru orice problemă vă rugăm să consultați întâi secțiunea",
+                "secondsectionFAQ": "Întrebări Frecvente",
+                "thirdSection": "Pentru a afla condițiile și procedura de atribuire a locurilor de parcare publice pe bază de abonament, vă rugăm să consultați regulamentul privind parcările publice aflate în administrarea Sectorului 4 al Municipiului București, prin Direcția Mobilitate Urbană Sector 4. Consultă regulamentul",
+                "thirdSectionHere": " AICI",
+                "fourthSection": "Pașii pe care trebuie să îi parcurgeți îi regăsiți în următorul ",
+                "fourthSectionVideo": "Tutorial Video (DEMO)",
+                "fifthSection": "Pentru achitarea tarifului de parcare publică pe bază de abonament, vă rugăm să utilizați următoarele",
+                "fifthSectionPaymentMethods": "metode de plată",
+                "sixthSection": "Dacă nu găsiți răspunsul la întrebarea care vă preocupă, cât și în cazul în care întâmpinați probleme tehnice sau doriți să depuneți o solicitare/sesizare, vă rugăm să accesați",
+                "sixthSectionRegistraturaOnline": "Registratura Online"
+            }
+        },
+        "locParcareIndisponibil": {
+            "titleSections": {
+                "indisponibil": "Loc de parcare indisponibil",
+                "tarifOrar": "Tarif orar",
+                "chargingStation": "Stație de încărcare",
+                "pdSpot": "Persoana cu dizabilități",
+                "tempBlockedSpot": "Loc blocat pentru 15 minute",
+                "carSharing": "Car sharing"
+            },
+            "noAreaSpot": "Pentru această adresă nu există un loc de parcare disponibil în raza de 250 de metri, în acest caz puteți să faceți o solicitare online în vederea identificării unor spații pentru amenajarea unor noi locuri de parcare (dacă situația din teren permite acest lucru), apăsând butonul de mai jos.",
+            "sendSolicitareBtnLabel": "Trimite o solicitare",
+            "locIndisponibil": "Acest loc nu este disponibil. Pentru a solicita un loc de parcare",
+            "publiceLabel": "cu abonament",
+            "resedintaLabel": "de reședință",
+            "locIndisponibilP2": "vă rugăm selectați un loc disponibil (marcat cu verde).",
+            "hour": "Acest loc de parcare este destinat parcării pe tarif orar și nu permite abonare. Pentru a solicita un loc de parcare cu abonament, vă rugăm selectați un loc disponibil (marcat cu verde).",
+            "charging": "Acest loc de parcare este folosit ca stație de încarcare și nu permite abonare. Pentru a solicita un loc de parcare cu abonament, vă rugăm selectați un loc disponibil (marcat cu verde).",
+            "pd": "Acest loc de parcare este destinat pentru persoane cu dizabilități și nu permite abonare. Pentru a solicita un loc de parcare cu abonament, vă rugăm selectați un loc disponibil (marcat cu verde).",
+            "blockedSpotTemp": "Acest loc de parcare este accesat de alt utilizator și are la dispoziție 15 minute pentru a trimite solicitarea",
+            "remainingTime": "Timp rămas:",
+            "carSharing": "Acest loc de parcare este destinat pentru Car Sharing si nu permite abonarea. Pentru a solicita un loc de parcare cu abonament, va rugam selectati un loc disponibil (marcat cu verde)."
+        }
+    },
+    "gisForm": {
+        "petitiePage": {
+            "titleSection": "Solicitare",
+            "subHeader": "Solicitare online in vederea identificarii unor spatii pentru amenajarea unor noi locuri de parcare."
+        },
+        "formLabels": {
+            "persFizica": "Persoană fizică",
+            "persJuridica": "Persoană juridică",
+            "cnpLabel": "CNP",
+            "cuiLabel": "CUI",
+            "noVATLabel": "fără RO în față",
+            "number":"Număr poștal",
+            "bloc": "Bloc",
+            "scara": "Scară",
+            "apartament": "Nr. ap/casă",
+            "agreeTerms" :"Sunt de acord cu Termenii și Condițiile de Confidențialitate",
+            "requiredFieldsPart1": "Câmpurile marcate cu",
+            "requiredFieldsPart2": "sunt obligatorii",
+            "denumireLabel": "Denumire",
+            "regComLabel": "Nr. Reg. Com",
+            "nume": "Nume",
+            "prenume": "Prenume",
+            "reprezentant": "Reprezentant",
+            "telefon": "Telefon",
+            "email": "Email",
+            "observatii": "Observații",
+            "dizabilitati": "Persoană cu dizabilități",
+            "beforeStep": "Pasul precedent",
+            "nextStep": "Următorul pas",
+            "submitBtn": "Trimite solicitarea",
+            "addressPlaceholder": "Alege o adresă",
+            "numarAutoLabel": "Numar înmatriculare auto",
+            "marcaAutoLabel": "Marcă auto",
+            "dataExpItpLabel": "Data expirare ITP",
+            "dataExpRCALabel": "Data expirare RCA",
+            "comodatLabel": "Contract de comodat",
+            "handicapCertificatLabel": "Dată expirare certificat de încadrare în grad de handicap",
+            "handicapCertificatInfo": "Doar în cazul în care urmează să încarcați un certificat de încadrare în grad de handicap revizuibil.",
+            "sediuSocialLabel": "Adresa sediu social:", 
+            "sediuSocialInfo": "* Daca diferă de adresa punctului de lucru.",
+            "cuiFileLabel": "C.U.I.",
+            "dovadaPctLucruLabel": "Dovadă punct lucru",
+            "ciFileLabel": "Carte de identitate / Buletin de identitate",
+            "vizaFlotantLabel": "Viză flotant / Permis de ședere",
+            "talonAutoLabel" : "Certificat de înmatriculare autovehicul ",
+            "asigurareRcaLabel": "Asigurare RCA ",
+            "leasingLabel": "Contract de leasing",
+            "contractDeComodatLabel": "Contract de comodat",
+            "certificatIncadrareHandicap": "Certificat de încadrare în grad de handicap",
+            "addFileLabel": "Adaugă"
+        },
+        "formValidation": {
+            "requiredField": "Câmp obligatoriu.",
+            "fillAllRequiredFields": "Vă rugăm să completați toate câmpurile",
+            "numarAutoInvalid": "Numarul auto introdus este invalid. Ex: B123ABC"
+        },
+        "dizabilitatiPage" : {
+            "titleSection": "Solicitare loc parcare - persoană cu dizabilități"
+        },
+        "solicitarePage": {
+            "titleSection": "Solicitare loc parcare"
+        },
+        "abonamenteStradalePage": {
+            "titleSection": "Solicitare Abonament Stradal",
+            "labels": {
+                "available": "Abonamente disponibile:",
+                "tarifAbonamentPart1": "1. Abonamentul lunar este de ",
+                "tarifAbonamentPart2": "lei/lună (TVA inclus), nefracționabil, și permite utilizarea unui loc de parcare fără rezervarea sau nominalizarea acestuia.",
+                "valabilityAbonamentPart1": "2. Abonamentul este valabil până la data de ",
+                "valabilityAbonamentPart2": " orele ",
+                "shouldBeAgreeOnTerms": "Pentru a continua vă rugam sa bifaţi că aţi văzut şi aţi luat la cunoştinta punctul 1 şi 2."
+            }
+        },
+        "abonamenteStradaleModule": {
+            "titleSection": "Abonamentele mele",
+            "footerActiveItems" : "Abonamente active",
+            "footerHistoryItems": "Istoric abonamente",
+            "noActiveAbonamente": "La acest moment nu aveți niciun abonament activ.",
+            "noIstoricAbonamente": "Nu avem niciun abonament înregistrat."
+        }
+    },
+    "notificariPage": {
+        "list": {
+            "titleSection": "Notificări",
+            "noRecords": "Lipsă înregistrări"
+        },
+        "one" : {
+            "titleSection" : "Notificare"
+        }
+    },
+    "parkingCheckContractPage" : {
+        "titleSection" : "Verificare Contract Parcare - DMU",
+        "form" : {
+            "inputNrAutoPlaceholder" : "Numar auto",
+            "submitButton" : "Verifica",
+            "minLength": "Minim 3 caractere",
+            "maxLength" : "Maxim 15 caractere"
+        }
+    },
+    "parkingViewContractPage" : {
+        "titleSection" : "Contract Parcare"
+    }
+}

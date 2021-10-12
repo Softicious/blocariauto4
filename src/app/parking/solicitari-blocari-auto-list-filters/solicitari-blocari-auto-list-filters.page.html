@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-buttons slot="start">
+			<ion-button (click)="reset()">
+				Reset
+			</ion-button>
+		</ion-buttons>
+		<ion-title class="text-center">Filtre</ion-title>
+		<ion-buttons slot="end">
+			<ion-button (click)="dismiss()">
+				Done
+			</ion-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-grid>
+		<ion-row>
+			<ion-col>
+				<form [formGroup]="form" class="form">
+					<ion-list>
+						<ion-list-header>Filtrare - Cautare</ion-list-header>
+						<ion-item>
+							<ion-label position="stacked">
+								Cautare dupa numar auto:
+							</ion-label>
+							<ion-input type="text" formControlName="nr_auto" placeholder="B123XYZ"></ion-input>
+						</ion-item>
+					</ion-list>
+				</form>
+				<ion-list>
+					<ion-list-header>Filtrare - Status Solicitare</ion-list-header>
+					<ion-item *ngFor="let row of listFilters" class="ion-no-padding" (click)="updateCategory(row.id)">
+						<ion-label class="ion-padding-start">
+							<p class="display-flex ion-justify-content-between ion-align-items-center ">
+								<span>{{row.name}} </span>
+								<fa-icon *ngIf="row.id == catId" icon="check" class="blue-icon"></fa-icon>
+							</p>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+				<hr />
+				<ion-list>
+					<ion-list-header>Filtrare - Actiuni Solicitare</ion-list-header>
+					<ion-item *ngFor="let row of listModes" class="ion-no-padding" (click)="updateMode(row.id)">
+						<ion-label class="ion-padding-start">
+							<p class="display-flex ion-justify-content-between ion-align-items-center ">
+								<span>{{row.name}} </span>
+								<fa-icon *ngIf="row.id == modId" icon="check" class="blue-icon"></fa-icon>
+							</p>
+						</ion-label>
+					</ion-item>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

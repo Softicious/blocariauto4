@@ -1,0 +1,180 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-buttons slot="end">
+			<ion-button (click)="dismiss()">
+				<fa-icon icon="times" class="white-text"></fa-icon>
+			</ion-button>
+		</ion-buttons>
+		<ion-title>
+			<span class="main-title" *ngIf="loaded == 1"> Solicitare Blocare Auto</span>
+		</ion-title>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content class="sesizareAddBlocareAutoSpecialPageClass ion-no-padding">
+	<div class="map-wrapper">
+		<div #map id="map"></div>
+	</div>
+
+	<ion-grid class="whiteBg">
+		<ion-row>
+			<ion-col size-xl="4" offset-xl="4" size-lg="6" offset-lg="3" size-md="6" offset-md="3" size-sm="12">
+				<form [formGroup]="sesizareData" (ngSubmit)="addSesizare()" class="registerForm">
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="stacked"> Numar auto
+									<span class="red-text">*</span>
+								</ion-label>
+								<ion-input type="text" formControlName="nr_auto" placeholder="B123XXX">
+								</ion-input>
+							</ion-item>
+							<div *ngIf="(nrAuto.dirty || nrAuto.touched) && nrAuto.errors"
+								class="errors">
+								<span *ngIf="nrAuto.errors?.required">{{ 'sesizareAddPage.requiredField' |
+									translate }}</span>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="stacked"> Tip loc parcare blocat
+									<span class="red-text">*</span>
+								</ion-label>
+								<ion-select formControlName="parking_type" okText="Confirmă" placeholder="Alegeți"
+									cancelText="Anulați" class="text-right full-width size15">
+									<ion-select-option *ngFor="let row of parkingTypes" [value]="row.id">
+										{{row.label}}
+									</ion-select-option>
+								</ion-select>
+							</ion-item>
+							<div *ngIf="(parkingtype.dirty || parkingtype.touched) && parkingtype.errors"
+								class="errors">
+								<span *ngIf="parkingtype.errors?.required">{{ 'sesizareAddPage.requiredField' |
+									translate }}</span>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="stacked"> Categorie Auto Blocat
+									<span class="red-text">*</span>
+								</ion-label>
+								<ion-select formControlName="categorie_auto" okText="Confirmă" placeholder="Alegeți"
+									cancelText="Anulați" class="text-right full-width size15">
+									<ion-select-option *ngFor="let row of categoriiAuto" [value]="row.id">
+										{{row.label}}
+									</ion-select-option>
+								</ion-select>
+							</ion-item>
+							<div *ngIf="(categorieAuto.dirty || categorieAuto.touched) && categorieAuto.errors"
+								class="errors">
+								<span *ngIf="categorieAuto.errors?.required">{{ 'sesizareAddPage.requiredField' |
+									translate }}</span>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="stacked"> Blocator - QR
+									<span class="red-text">*</span>
+								</ion-label>
+								<ion-input type="text" formControlName="caracatita" placeholder=".....">
+								</ion-input>
+							</ion-item>
+							<div *ngIf="(caracatita.dirty || caracatita.touched) && caracatita.errors"
+								class="errors">
+								<span *ngIf="caracatita.errors?.required">{{ 'sesizareAddPage.requiredField' |
+									translate }}</span>
+							</div>
+						</ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="stacked"> {{ 'sesizareAddPage.addressLabel' | translate }} <span
+										class="red-text">*</span>
+								</ion-label>
+								<ion-textarea type="text" formControlName="address_label" readonly>
+								</ion-textarea>
+							</ion-item>
+						</ion-col>
+					</ion-row>
+					<ion-row style="width: 100%">
+						<ion-col size="12">
+							<ion-item>
+								<ion-label position="floating">{{ 'sesizareAddPage.observatiiLabel' | translate }}<span
+										class="orange-text">*</span>:</ion-label>
+								<ion-textarea type="text" formControlName="description"
+									placeholder="{{ 'sesizareAddPage.observatiiPlaceholder' | translate }}">
+								</ion-textarea>
+							</ion-item>
+							<div *ngIf="(description.dirty || description.touched) && description.errors"
+								class="errors">
+								<span *ngIf="description.errors?.required">{{ 'sesizareAddPage.requiredField' |
+									translate }}</span>
+							</div>
+						</ion-col>
+					</ion-row>
+					<br />
+					<ion-row>
+
+						<ion-col class="ion-padding text-left">
+							<small class="bluer-text"><strong>{{ 'sesizareAddPage.filesLabel' | translate
+									}}:</strong></small>
+							<ion-row *ngIf="sesizareFilesArr.length > 0">
+								<ion-col size="12">
+
+									<ion-row *ngFor="let fileData of sesizareFilesArr; let i = index;">
+										<ion-col size="10">
+											<p class="file-label">
+												<fa-icon icon="file" class="bluer-text"></fa-icon>
+												{{fileData.original_name}}
+											</p>
+										</ion-col>
+										<ion-col size="2" (click)="emptyFileArr(i)"
+											class="center flex-center ion-justify-content-end">
+											<span class="bluer-text text-right">
+												<fa-icon icon="times-circle" class="bluer-text"></fa-icon>
+											</span>
+										</ion-col>
+									</ion-row>
+								</ion-col>
+							</ion-row>
+							<ion-row *ngIf="sesizareFilesArr.length < 5">
+								<input type="file" #fileInput (change)="uploadFile($event, 'file_description')"
+									hidden="true" accept="application/pdf,image/*" />
+								<ion-button type="button" size="small" fill="solid" color="primary"
+									(click)="selectImageSource('file_description')" class="uppercase ion-margin-top">
+									<strong>{{'sesizareAddPage.addFileLabel' | translate}}</strong>
+								</ion-button>
+							</ion-row>
+						</ion-col>
+					</ion-row>
+
+					<ion-row>
+						<ion-col size="12">
+							<ion-button type="submit" expand="block" fill="solid" color="success"
+								class="uppercase ion-margin-top" [disabled]="!sesizareData.valid">
+								<strong>{{ 'sesizareAddPage.submitBtnLabel' | translate }}</strong>
+							</ion-button>
+						</ion-col>
+					</ion-row>
+
+
+				</form>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="scanQRBlocator()">
+		<ion-fab-button color="secondary">
+			<ion-icon name="qr-code-outline"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+
+</ion-content>

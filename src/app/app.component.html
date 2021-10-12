@@ -1,0 +1,62 @@
+<ion-app dir="{{textDir}}">
+	<!-- when=false means that the split pane will never expand automatically -->
+	<!-- For more info check https://ionicframework.com/docs/api/split-pane -->
+	<ion-split-pane contentId="menu-content" when="false">
+		<ion-menu contentId="menu-content" class="app-sidemenu">
+			<ion-header>
+				<ion-toolbar>
+					<ion-row class="user-details-wrapper">
+						<ion-col size="4">
+							<app-aspect-ratio [ratio]="{w: 1, h: 1}">
+								<app-image-shell class="user-avatar" animation="spinner"
+									[src]="'./assets/imgs/logo-ps4-white-border.png'">
+								</app-image-shell>
+							</app-aspect-ratio>
+						</ion-col>
+						<ion-col class="user-info-wrapper" size="8">
+							<h3 class="user-name">Blocari Auto <br/> PS4</h3>
+							<h5 class="user-handle">{{versionNumber}}</h5>
+						</ion-col>
+					</ion-row>
+				</ion-toolbar>
+			</ion-header>
+			<ion-content class="sideMenuClass">
+				<ion-list class='menu-list border-bottom' mode="md">
+					<ion-menu-toggle autoHide="false">
+						<ion-item [routerLink]="['/profile-view']">
+							<span slot="start" class="blue-bg ion-margin-end">
+								<fa-icon class="white-text" icon="user"></fa-icon>
+							</span>
+							<ion-label class="ion-margin-start">
+								<span>{{user.name}}</span>
+								<fa-icon class="ion-float-right" icon="angle-right"></fa-icon>
+							</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+				</ion-list>
+				<ion-list class="menu-list" mode="md">
+					<ion-list-header>
+						<ion-label>Meniu</ion-label>
+					</ion-list-header>
+					<ion-menu-toggle autoHide="false">
+						<ion-item [routerLink]="['/dashboard']">
+							<span slot="start"><fa-icon  icon="home"></fa-icon></span>
+							<ion-label>Acasă</ion-label>
+						</ion-item>
+						<ion-item [routerLink]="['/settings']">
+							<span slot="start"><fa-icon  icon="cog"></fa-icon></span>
+							<ion-label>Setări</ion-label>
+						</ion-item>
+
+						<ion-item (click)="logout()">
+							<span slot="start"><fa-icon  icon="sign-out-alt"></fa-icon></span>
+							<ion-label>Deconectare</ion-label>
+						</ion-item>
+					</ion-menu-toggle>
+				</ion-list>
+			</ion-content>
+		</ion-menu>
+		<!-- Main app content get's rendered in this router-outlet -->
+		<ion-router-outlet id="menu-content"></ion-router-outlet>
+	</ion-split-pane>
+</ion-app>

@@ -1,0 +1,6 @@
+[defaults]
+url=https://sentry.io/
+project=rops4primariasector4app
+org=iot-digital-development-srl
+[auth]
+token=304f683b85954574883a2c1813ded44dac98b259106b4935bedc790ab94a11bf

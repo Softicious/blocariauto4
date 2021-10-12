@@ -1,0 +1,56 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-title>{{ 'settingsPage.titleSection' | translate }}</ion-title>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="home" mode="md"></ion-back-button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="settingPage">
+
+	<ion-grid class="">
+		<ion-row>
+			<ion-col size-xl="4" offset-xl="4" size-lg="6" offset-lg="3"  size-md="6" offset-md="3" size-sm="12" *ngIf="loaded">
+				<ion-card class="noPadding flex-center-account">		
+					<ion-row>
+						<ion-col size="2">
+							<fa-icon icon="envelope" class="blue-icon"></fa-icon>
+						</ion-col>
+						<ion-col size="4">
+							<p>Utilizator</p>
+						</ion-col>
+						<ion-col size="6">
+							<p class="grey-text text-right" style="margin-right: 5px;">{{ user.email }}</p>
+						</ion-col>
+					</ion-row>
+					
+					 
+					<ion-row>
+						<ion-col size="2">
+							<fa-icon icon="lock" class="blue-icon"></fa-icon>
+						</ion-col>
+						<ion-col size="10" >
+							<p (click)="changePassword()">Schimbați parola</p>
+						</ion-col>
+					</ion-row>
+			
+					<ion-row>
+						<ion-col size="2">
+							<fa-icon icon="info" class="blue-icon"></fa-icon>
+						</ion-col>
+						<ion-col size="5">
+							<p>Versiune aplicație</p>
+						</ion-col>
+						<ion-col size="5">
+							<p class="grey-text text-right" style="margin-right: 5px;">{{appDetails.appVersion}}</p>
+						</ion-col>
+			
+					</ion-row>
+		
+				</ion-card>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+
+</ion-content>

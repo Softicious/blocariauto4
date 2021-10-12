@@ -1,0 +1,75 @@
+<ion-header>
+	<ion-toolbar class='title-section-bg-color' mode="md">
+		<ion-buttons slot="start">
+			<ion-menu-button></ion-menu-button>
+		</ion-buttons>
+		<ion-title>
+			<span class="main-title">{{ 'dashboardPage.titleSection' | translate}}</span>
+		</ion-title>
+		<ion-buttons slot="end">
+			<span class="position-relative flex-center" routerLink="/notificari-list" routerDirection="forward">
+				<ion-icon class="ion-margin-end ion-padding-end" name="mail-outline"  slot="icon-only" ></ion-icon>
+				<small class="overlay-number" *ngIf="showNoMesaje == 1">{{noMesaje}}</small>
+			</span>
+			
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="pageDashboard noWhitesBg">
+	<ion-grid>
+		<ion-row>
+			<ion-col size-xl="4" offset-xl="4" size-lg="6" offset-lg="3" size-md="6" offset-md="3" size-sm="12">
+				<div class="vertical-center">
+					<div class="center">
+						<ion-img src="./assets/imgs/logo-ps4-white-border.png" class="center-logo">
+						</ion-img>
+					</div>
+				</div>
+			</ion-col>
+		</ion-row>
+		<ion-row>
+			<ion-col size-xl="4" offset-xl="4" size-lg="6" offset-lg="3" size-md="6" offset-md="3" size-sm="12">
+				<h3 class="welcome-title text-center">{{ 'dashboardPage.introText' | translate }} <br/><span
+						class="capitalize">{{user.name}}</span>!</h3>
+			</ion-col>
+		</ion-row>
+
+		<ion-row>
+			<ion-col size-xl="4" offset-xl="4" size-lg="6" offset-lg="3" size-md="6" offset-md="3" size-sm="12" class="ion-padding-top ion-margin-top">
+				
+				<ion-row>
+					<ion-col size="6" class="flex-center ion-justify-content-center">
+						<div class="custom-button-full" routerLink="/check-contract" routerDirection="forward">
+							<img src="./assets/icons/dashboard/car-insurance.png" class="img-responsive" />
+							<p class="text-center">Verificare Contract <br/> Resedinta / Publice</p>
+						</div>
+					</ion-col>
+
+					<ion-col size="6" class="flex-center ion-justify-content-center">
+						<div class="custom-button-full" routerLink="/solicitari-blocari-auto-list" routerDirection="forward">
+							<img src="./assets/icons/dashboard/wheel.png" class="img-responsive" />
+							<p class="text-center">Solicitari <br/> Blocari Auto</p>
+						</div>
+					</ion-col>
+				</ion-row>
+
+				<ion-row>
+					<ion-col size="6" class="flex-center ion-justify-content-center">
+						<div class="custom-button-full" routerLink="/sign-team-day" routerDirection="forward">
+							<img src="./assets/icons/dashboard/connection.png" class="img-responsive" />
+							<p class="text-center">Inregistrare <br/> Activitate zi</p>
+						</div>
+					</ion-col>
+
+					<ion-col size="6" class="flex-center ion-justify-content-center">
+						<div class="custom-button-full" routerLink="/gestiune-blocatoare" routerDirection="forward">
+							<img src="./assets/icons/dashboard/qr-scan.png" class="img-responsive" />
+							<p class="text-center">Gestiune <br/> Blocatoare</p>
+						</div>
+					</ion-col>
+				</ion-row>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

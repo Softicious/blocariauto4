@@ -1,0 +1,96 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-title class="text-center">
+			Solicitari
+		</ion-title>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="home" mode="md"></ion-back-button>
+		</ion-buttons>
+
+		<ion-buttons slot="end">
+			<span class="position-relative flex-center m5" (click)="refreshData()">
+				<ion-icon slot="icon-only" name="repeat-outline"></ion-icon>
+			</span>
+			<span class="position-relative flex-center m5" (click)="showFilters()">
+				<ion-icon slot="icon-only" name="options"></ion-icon>
+				<small class="overlay-number" *ngIf="outputNumFiltersActive() > 0">{{outputNumFiltersActive()}}</small>
+			</span>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content class="solicitariBlocariAutoListClass noPadding">
+
+	<ion-grid *ngIf="loaded == 1">
+		<ion-row>
+			<ion-col size="12">
+				<ion-list class="articles-wrap">
+					<ion-item *ngFor="let row of records" class="ion-padding-top mesaj-object"
+						(click)="openSolicitare(row.id)">
+						<ion-row class="full-width">
+							<ion-col class="ion-no-padding">
+								<ion-label>
+									<h3 class="ion-no-margin " [class.red-text]="[4].includes(row.current_status)">
+										<span> #{{row.id}} - {{row.subject}}</span>
+									</h3>
+									<p class="ion-no-margin display-flex ion-justify-content-between">
+										<span><fa-icon icon="lock" class=""></fa-icon> {{row.lock_status}} </span>
+										<span *ngIf="row.caracatita_id !== null">
+											<fa-icon icon="wrench" class="ion-padding-end"></fa-icon>
+											{{row.caracatita_label}}
+										</span>
+									</p>
+									<p class="ion-no-margin display-flex ion-justify-content-between">
+										<span><fa-icon icon="flag" class=""></fa-icon> {{row.status_label}}</span>
+										<span *ngIf="row.nr_auto !== null && row.nr_auto !== ''">
+											<fa-icon icon="car" class="ion-padding-end"></fa-icon>
+											{{row.nr_auto}}
+										</span>
+									</p>
+									<p class="ion-no-margin display-flex ion-justify-content-between">
+										<span><fa-icon icon="info-circle" class=""></fa-icon> {{row.source_label}} </span>
+										<span *ngIf="getLocationProcessed"><fa-icon icon="location-arrow" class="blue-icon"></fa-icon> {{row.distance}} KM</span>
+									</p>
+									<p class="ion-no-margin" *ngIf="row.source == 1"><fa-icon icon="parking" class=""></fa-icon> {{row.simbol}} / {{row.nr_parcare}}</p>
+									<p class="ion-no-margin">
+										<span><fa-icon icon="clock" class=""></fa-icon> {{row.created_at}} / {{row.updated_at}}</span>
+									</p>
+								</ion-label>
+							</ion-col>
+						</ion-row>
+					</ion-item>
+
+					<ion-item *ngIf="records.length == 0">
+						<ion-label>
+							<p class="text-center">La acest moment nu aveți nici o inregistare.</p>
+						</ion-label>
+					</ion-item>
+
+				</ion-list>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="maxPagesLoad == false">
+            <ion-col>
+                <ion-infinite-scroll #infiniteScroll (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Vă rugăm așteptați...">
+                    </ion-infinite-scroll-content>
+                  </ion-infinite-scroll>
+            </ion-col>
+        </ion-row>
+	</ion-grid>
+
+	
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="scanQRBlocator()">
+		<ion-fab-button color="secondary">
+			<ion-icon name="qr-code-outline"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+
+	<ion-fab vertical="bottom" horizontal="start" slot="fixed"  *ngIf="allowBlocariAutoSection.bl_s == 1">
+		<ion-fab-button color="primary" class="ion-no-margin noMarginClass" (click)="sesizareNewBlocareAutoSpecialOpen()">
+			<ion-icon name="add-outline"></ion-icon>
+		</ion-fab-button>
+	</ion-fab>
+
+	
+</ion-content>

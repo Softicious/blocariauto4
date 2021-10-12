@@ -1,0 +1,172 @@
+.info-section {
+    border: 1px solid #576194;
+    padding: 0 !important;
+}
+
+.box-sections h4 {
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+.info-section h4 {
+    background: #576194;
+    color: white;
+}
+.parcare-section h4 {
+    background: #57945a;
+    color: white;
+}
+.parcare-section {
+    border: 1px solid #57945a;
+    padding: 0 !important;
+}
+
+.display-flex {
+    display: flex;
+}
+
+.cetBlocatSection {
+    border: 1px solid #9e3c60;
+    padding: 0 !important;
+}
+.cetBlocatSection h4 {
+    background: #9e3c60;
+    color: white;
+}
+.payment-section {
+    border: 1px solid #a25b39;
+    padding: 0 !important;
+}
+.payment-section h4 {
+    background: #a25b39;
+    color: white;
+}
+
+.bg-deschis h4 {
+    background: #34d7f9 !important;
+    color: white;
+}
+.bg-deschis {
+    border: 1px solid #34d7f9;
+}
+.bg-rasp-echipa h4 {
+    background: #31bcc1 !important;
+    color: white;
+}
+.bg-rasp-echipa {
+    border: 1px solid #31bcc1;
+}
+.bg-curs-blocare h4 {
+    background: #d47bf3 !important;
+    color: white;
+}
+.bg-curs-blocare {
+    border: 1px solid #d47bf3;
+}
+.bg-blocat h4 {
+    background: #ff0900 !important;
+    color: white;
+}
+.bg-blocat {
+    border: 1px solid #ff0900;
+}
+.bg-curs-deblocare h4 {
+    background: #791e98 !important;
+    color: white;
+}
+.bg-curs-deblocare {
+    border: 1px solid #791e98;
+}
+.bg-platit h4 {
+    background: #32a732 !important;
+    color: white;
+}
+.bg-platit {
+    border: 1px solid #32a732;
+}
+.bg-deblocat h4 {
+    background: #188610 !important;
+    color: white;
+}
+.bg-deblocat {
+    border: 1px solid #188610;
+}
+.bg-anulat h4 {
+    background: #f96834 !important;
+    color: white;
+}
+.bg-anulat {
+    border: 1px solid #f96834;
+}
+.bg-inchis h4 {
+    background: #0431ff !important;
+    color: white;
+}
+.bg-inchis {
+    border: 1px solid #0431ff;
+}
+.history-box h4 {
+    width: 100%;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+.display-flex {
+    display: flex;
+}
+.flex-column {
+    flex-direction: column;
+}
+.history-box {
+    --width: 100%;
+    --margin: 0 !important;
+    --padding: 0 !important;
+}
+
+ion-item.history-box {
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+}
+
+.whiteBg {
+    background: white;
+    padding: 15px 5px !important;
+    box-shadow: 1px 1px 1px solid #ddd;
+    border-radius: 5px;
+    border: 1px solid #eae5e5;
+}
+.errors {
+    font-size: small;
+    color: #fff;
+    background: var(--ion-color-danger);
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.parkingCheckContractPageClass ion-button,
+.parkingCheckContractPageClass ion-button strong {
+    --color: white !important;
+    color: white !important;
+}
+.parkingCheckContractPageClass .passwordIcon {
+    color: #1665c0;
+}
+.bluer-text,
+.file-label {
+    color: #1665c0 !important;
+}
+.info-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+.pull-right {
+    float: right;
+}

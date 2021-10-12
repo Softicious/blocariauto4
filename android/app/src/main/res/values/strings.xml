@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Blocari Auto PS4</string>
+    <string name="title_activity_main">Blocari Auto PS4</string>
+    <string name="package_name">ro.ps4.blocariautoapp</string>
+    <string name="custom_url_scheme">ro.ps4.blocariautoapp</string>
+</resources>

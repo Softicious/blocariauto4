@@ -1,0 +1,96 @@
+<ion-header>
+	<ion-toolbar mode="md">
+		<ion-title>
+			{{ 'notificariPage.list.titleSection' | translate }}
+		</ion-title>
+		<ion-buttons slot="start">
+			<ion-back-button defaultHref="home" mode="md"></ion-back-button>
+		</ion-buttons>
+
+		<ion-buttons slot="end">
+			<ion-icon slot="icon-only" ios="ellipsis-horizontal" md="ellipsis-vertical" (click)="showMenuItems($event)"></ion-icon>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+
+
+<ion-content class="noutatiPage notificariPage noPadding">
+	<ion-grid *ngIf="loaded == 1">
+		<ion-row>
+			<ion-col size="12">
+				<ion-list class="articles-wrap">
+					<ion-item *ngFor="let row of records" class="ion-no-padding mesaj-object"
+						[class.new]="row.class == 'new'" [class.seen]="row.class == 'seen'"
+						(click)="openNotificare(row)">
+
+						<ion-col size="4" class="cover-image-article ion-no-padding">
+
+							<ion-img *ngIf="row.thumbnail !== null" [src]="row.thumbnail" class="article-img">
+							</ion-img>
+							<ion-img *ngIf="row.thumbnail == null" src="./assets/imgs/no-image.png" class="article-img">
+							</ion-img>
+
+						</ion-col>
+						<ion-col size="8" class="article-info">
+
+							<span *ngIf="row.class == 'new'" class="floating-bell red-text">
+								<i class="fas fa-bell"></i>
+								<fa-icon icon="bell" class="red-text"></fa-icon>
+							</span>
+							<ion-row class="article-title full-width">
+								<ion-col size="12" class="wrap">
+									<p class="ion-no-margin">{{row.title | slice: 0:45 }}{{row.title.length > 45 ? '...'
+										: ''}}</p>
+									<p class="ion-no-margin ion-no-padding ion-margin-top">
+										<small class="grey-text pull-left full-width">{{row.date}} {{row.time}}
+											<ion-badge class="small-badge-push pull-right"
+												[ngStyle]="{'background': row.badge.bg, 'color': row.badge.color}">
+												#{{row.badge.label}} </ion-badge>
+										</small>
+									</p>
+								</ion-col>
+							</ion-row>
+							<ion-row class="article-bottom-info full-width">
+								<ion-col size="12">
+									<p class="ion-no-margin ion-no-padding grey-text" style="white-space: initial;">
+										<small>{{row.excerpt | slice: 0:50 }}{{row.excerpt.length > 50 ? '...' :
+											''}}</small>
+									</p>
+								</ion-col>
+							</ion-row>
+						</ion-col>
+					</ion-item>
+					<ion-item *ngIf="records.length == 0">
+						<p class="text-center">La acest moment nu aveți nici o notificare.</p>
+					</ion-item>
+				</ion-list>
+			</ion-col>
+		</ion-row>
+		<ion-row *ngIf="maxPagesLoad == false">
+            <ion-col>
+                <ion-infinite-scroll #infiniteScroll (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Vă rugăm așteptați...">
+                    </ion-infinite-scroll-content>
+                  </ion-infinite-scroll>
+            </ion-col>
+        </ion-row>
+	</ion-grid>
+
+
+	<!-- fab placed to the bottom and start and on the bottom edge of the content overlapping footer with a list to the right -->
+	<ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="loaded == 1">
+		<ion-fab-button>
+			<ion-icon name="filter-outline"></ion-icon>
+		</ion-fab-button>
+		<ion-fab-list side="top" close-icon>
+			<div *ngFor="let row of categories" class="position-relative">
+				<ion-fab-button  close-icon (click)="filter(row.id)">
+					<!-- <ion-icon name="logo-youtube"></ion-icon> -->
+					<fa-icon icon="{{row.icon}}" class="size25 blue-icon"></fa-icon>
+				</ion-fab-button>
+				<ion-label class="full-width" (click)="filter(row.id)">{{row.name}}</ion-label>
+			</div>
+		</ion-fab-list>
+	</ion-fab>
+
+</ion-content>

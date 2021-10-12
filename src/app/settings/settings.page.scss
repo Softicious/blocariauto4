@@ -1,0 +1,51 @@
+ion-content.settingPage {
+    --padding-top: 5%;
+    --padding-start: 0% !important;
+    --padding-end: 0% !important;
+    // --background: url("../../assets/bgs/layout-bg-ex7.jpg") 0 0/100% 100%
+    // no-repeat;
+}
+.whiteBg {
+    background: white;
+    padding: 15px 5px !important;
+    box-shadow: 1px 1px 1px solid #ddd;
+    border-radius: 5px;
+    border:1px solid #eae5e5;
+}
+.settingPage p {
+    font-size: 90%;
+    margin: 0;
+}
+.flex-center-account ion-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    padding: 10px 0;
+}
+.flex-center-account ion-col:first-child {
+    text-align: center;
+}
+.settingPage p {
+    margin-top: 0;
+    margin-bottom: 0;
+    --margin-top: 0;
+    --margin-bottom: 0;
+}
+.settingPage .text-right {
+    text-align: right;
+}
+.clean-text-a {
+    color: inherit !important;
+    text-decoration: none !important;
+    font-weight: inherit !important;
+    font-size: 90% !important;
+}
+.settingPage ion-toggle {
+    --background: #f4f4f4;
+    --background-checked: #1665c0;
+  
+    --handle-background: #f4f4f4;
+    --handle-background-checked: #1665c0;
+}
